@@ -5,108 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anne Sofie Uhrskov Mikkelsen</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
       background: #f5f5f5;
       font-family: 'Times New Roman', Times, serif;
       color: #111;
       min-height: 100vh;
-      overflow-x: hidden;
+      width: 100vw;
     }
-    /* Layout for main area */
-    .layout {
-      display: flex;
+    body {
       min-height: 100vh;
-      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      box-sizing: border-box;
     }
-    /* Side menu */
-    .side-menu {
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+      width: 100vw;
+    }
+    .side-menu-area {
+      width: 270px;
       min-width: 220px;
+      max-width: 300px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-end;
-      padding-right: 2vw;
-      /* Moves it slightly towards the center */
-      margin-left: 2vw;
+      align-items: flex-start;
+      padding-left: 2vw;
+      padding-right: 1vw;
+      background: transparent;
+      z-index: 2;
+      position: relative;
+    }
+    .side-menu-title {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      margin-top: 0;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      font-family: 'Times New Roman', Times, serif;
     }
     .nav {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      align-items: flex-end;
+      gap: 2rem;
+      align-items: flex-start;
+      width: 100%;
     }
     .nav a {
       color: #222;
       text-decoration: none;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-family: 'Times New Roman', Times, serif;
       transition: color 0.2s;
-      padding: 0.2rem 0.8rem;
-      border-radius: 6px;
+      padding: 0.2rem 0;
     }
     .nav a:hover {
       color: #666;
-      background: #ececec;
     }
-    /* Main content area */
-    .main-content {
+    .main-image-area {
       flex: 1;
+      position: relative;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      justify-content: flex-start;
-      padding-top: 2rem;
+      align-items: stretch;
+      justify-content: stretch;
+      overflow: hidden;
+      min-width: 0;
     }
-    /* Hero image */
-    .hero-img-container {
-      position: relative;
+    .main-image-area img {
       width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    .hero-img {
-      width: 60vw;
-      max-width: 800px;
-      min-width: 320px;
-      height: auto;
-      border-radius: 18px;
+      height: 100%;
       object-fit: cover;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-      background: #fff;
-      /* Center horizontally */
       display: block;
+      border-radius: 0 24px 24px 0;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
     }
-    /* Large name over the image */
-    .hero-title {
-      position: absolute;
-      left: 8vw;
-      bottom: 7vw;
-      font-size: 4vw;
-      font-weight: bold;
-      color: #111;
-      text-shadow: 0 2px 12px rgba(255,255,255,0.8), 0 1px 6px rgba(0,0,0,0.07);
-      background: rgba(255,255,255,0.8);
-      padding: 1vw 2vw;
-      border-radius: 1vw;
-      font-family: 'Times New Roman', Times, serif;
-      line-height: 1.08;
-      max-width: 48vw;
-      box-sizing: border-box;
-      word-break: break-word;
-      letter-spacing: 0.01em;
-    }
-    /* Email in header */
+    /* Email top right */
     .header-email {
       position: absolute;
-      top: 2rem;
-      right: 2rem;
+      top: 2.5rem;
+      right: 2.5rem;
       font-size: 1.1rem;
       color: #222;
+      z-index: 50;
+      font-family: 'Times New Roman', Times, serif;
     }
     .header-email a {
       color: #222;
@@ -116,57 +105,43 @@
       color: #666;
       text-decoration: underline;
     }
-    /* Footer */
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 2rem;
-    }
-    .socials {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    /* Responsive adjustments */
+    /* Responsive for mobile */
     @media (max-width: 900px) {
-      .layout {
+      .main-layout {
         flex-direction: column;
       }
-      .side-menu {
-        flex-direction: row;
-        justify-content: center;
+      .side-menu-area {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 0;
         align-items: center;
-        min-width: unset;
-        padding: 1rem 0;
-        margin-left: 0;
+        padding: 1.4rem 0 0.8rem 0;
+      }
+      .side-menu-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
       }
       .nav {
         flex-direction: row;
-        gap: 0.7rem;
-        align-items: center;
+        gap: 1.2rem;
+        justify-content: center;
+        width: 100vw;
       }
-      .hero-img-container {
-        max-width: 100vw;
+      .nav a {
+        font-size: 1.05rem;
       }
-      .hero-img {
-        width: 96vw;
-        max-width: 99vw;
+      .main-image-area {
+        height: 44vh;
+        min-height: 220px;
+        border-radius: 0 0 24px 24px;
       }
-      .hero-title {
-        position: static;
-        font-size: 2rem;
-        background: rgba(255,255,255,0.85);
-        border-radius: 0.7rem;
-        padding: 0.8rem 1.2rem;
-        margin-top: -2.5rem;
-        max-width: 96vw;
-        text-align: center;
+      .main-image-area img {
+        border-radius: 0 0 24px 24px;
       }
       .header-email {
         position: static;
         text-align: center;
-        margin: 1.2rem 0;
+        margin: 0.5rem auto 0.5rem auto;
       }
     }
   </style>
@@ -175,8 +150,9 @@
   <div class="header-email">
     <a href="mailto:annesofieum@outlook.dk">annesofieum@outlook.dk</a>
   </div>
-  <div class="layout">
-    <aside class="side-menu">
+  <div class="main-layout">
+    <aside class="side-menu-area">
+      <div class="side-menu-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
       <nav class="nav">
         <a href="#praktisk">Det praktiske</a>
         <a href="#uddannelse">Uddannelse</a>
@@ -185,20 +161,9 @@
         <a href="#motivation">Motivation</a>
       </nav>
     </aside>
-    <main class="main-content">
-      <div class="hero-img-container">
-        <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen" class="hero-img">
-        <div class="hero-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
-      </div>
+    <main class="main-image-area">
+      <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen">
     </main>
   </div>
-  <footer>
-    <div class="socials">
-      <a href="#">LinkedIn</a>
-    </div>
-    <div>
-      <a href="mailto:annesofieum@outlook.dk">Skal vi snakke?</a>
-    </div>
-  </footer>
 </body>
 </html>
