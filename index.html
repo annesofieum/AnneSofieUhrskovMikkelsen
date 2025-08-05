@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anne Sofie Uhrskov Mikkelsen</title>
-  <!-- Font: Montserrat for a modern look, can change to another if you like -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       background: #f5f5f5;
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Times New Roman', Times, serif;
       color: #111;
     }
     a {
@@ -49,29 +47,6 @@
       background: #fff;
       display: block;
     }
-    .hero-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 0.8rem;
-      text-align: center;
-    }
-    .cta {
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      color: #222;
-      text-decoration: underline;
-      cursor: pointer;
-      display: inline-block;
-      transition: color 0.2s;
-    }
-    .cta:hover { color: #666; }
     footer {
       display: flex;
       justify-content: space-between;
@@ -79,9 +54,6 @@
       padding: 2rem;
     }
     @media (max-width: 900px) {
-      .hero-title {
-        font-size: 1.6rem;
-      }
       .hero-img {
         width: 95vw;
         max-width: 99vw;
@@ -92,10 +64,13 @@
 <body>
   <header>
     <div>
-      <div style="font-weight:bold;">Anne Sofie Uhrskov Mikkelsen</div>
+      <div style="font-weight:bold; font-family: 'Times New Roman', Times, serif;">Anne Sofie Uhrskov Mikkelsen</div>
       <nav class="nav">
-        <a href="#work">Erfaring</a>
-        <a href="#about">Motivation</a>
+        <a href="#praktisk">Det praktiske</a>
+        <a href="#uddannelse">Uddannelse</a>
+        <a href="#erfaring">Erfaring</a>
+        <a href="#kompetencer">Kompetencer</a>
+        <a href="#motivation">Motivation</a>
       </nav>
     </div>
     <div>
@@ -105,10 +80,6 @@
   <main>
     <div class="top-image-container">
       <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen" class="hero-img">
-    </div>
-    <div class="hero-section">
-      <div class="hero-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
-      <a class="cta" href="#work">Se mit arbejde &gt;&gt;</a>
     </div>
   </main>
   <footer>
