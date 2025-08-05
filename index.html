@@ -6,307 +6,411 @@
   <title>Anne Sofie Uhrskov Mikkelsen</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --soft-green: #eaeede;
+      --accent-green: #7e9c85;
+      --title-green: #294231;
+      --box-bg: #f8faf7;
+      --card-bg: #f4f7ef;
+      --legend-dark: #294231;
+      --legend-light: #7e9c85;
+      --border-radius: 18px;
+      --font-main: 'Playfair Display', serif;
+      --font-title: 'Playfair Display', serif;
+    }
     html, body {
-      height: 100%;
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: #fff;
+      padding: 0;
+      height: 100%;
+      background: var(--box-bg);
+      font-family: var(--font-main);
       color: #232323;
+      font-weight: 400;
       min-height: 100vh;
       box-sizing: border-box;
-      font-weight: 400;
     }
     .split-layout {
       display: flex;
       min-height: 100vh;
       width: 100vw;
+      background: var(--box-bg);
     }
     .sidebar {
-      width: 380px;
-      min-width: 220px;
+      width: 340px;
+      min-width: 210px;
       background: #fff;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 32px 0 0 32px;
+      padding: 38px 0 0 32px;
       box-sizing: border-box;
       z-index: 3;
+      border-right: 1.5px solid var(--soft-green);
+      min-height: 100vh;
     }
     .name-title {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: #222;
-      margin-bottom: 2.0rem;
+      color: var(--title-green);
+      margin-bottom: 2.2rem;
       letter-spacing: 0.02em;
       line-height: 1.12;
       white-space: pre-line;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-title);
     }
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 1.2rem;
       margin-left: 1rem;
       margin-top: 6.5rem;
       width: 100%;
     }
     .menu a {
-      font-size: 1.01rem;
-      color: #444;
+      font-size: 1.11rem;
+      color: var(--title-green);
       text-decoration: none;
-      padding: 0.13em 0.5em;
-      border-radius: 7px;
-      transition: 
-        background 0.18s cubic-bezier(.6,.01,.35,1.02), 
-        color 0.16s cubic-bezier(.6,.01,.35,1.02),
-        transform 0.18s cubic-bezier(.6,.01,.35,1.02);
+      padding: 0.19em 0.95em;
+      border-radius: var(--border-radius);
+      transition: background 0.16s, color 0.14s, transform 0.18s;
       cursor: pointer;
       opacity: 0.7;
       letter-spacing: 0.01em;
-      width: fit-content;
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      position: relative;
+      font-weight: 500;
     }
     .menu a.active, .menu a:hover {
-      background: #eaeede;
-      color: #294231;
+      background: var(--soft-green);
+      color: var(--accent-green);
       opacity: 1;
-      transform: translateX(7px) scale(1.08);
-      box-shadow: 0 2px 16px #cfd7c281;
+      transform: translateX(7px) scale(1.07);
+      box-shadow: 0 1px 10px #cfd7c281;
     }
     .menu a:active {
-      background: #d6e5c2;
+      background: #def0de;
       color: #1f3324;
       transform: translateX(2px) scale(0.98);
-      transition: background 0.08s, color 0.09s, transform 0.08s;
     }
     .content-area {
       flex: 1;
       min-height: 100vh;
+      background: var(--box-bg);
       display: flex;
       align-items: flex-start;
       justify-content: center;
       position: relative;
-      background: #fff;
-      overflow: visible;
       z-index: 2;
+      overflow: auto;
     }
+    /* Forside image */
     .front-image {
       max-width: 100vw;
       width: 100%;
-      height: 100vh;
-      min-height: 800px;
+      height: 110vh;
+      min-height: 950px;
       object-fit: cover;
       display: block;
       border-radius: 0;
       box-shadow: 0 6px 56px #d3e1be3f;
       background: #fff;
-      animation: fadeInFrontImg 0.7s cubic-bezier(.6,.01,.35,1.02);
     }
-    @keyframes fadeInFrontImg {
-      from { opacity: 0; transform: scale(0.98);}
-      to { opacity: 1; transform: scale(1);}
-    }
+    /* Section Content */
     .section-content {
       display: none;
       width: 100%;
-      max-width: 1200px;
+      min-width: 700px;
+      max-width: 1260px;
+      margin: 0 auto;
       padding: 0;
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      margin: auto;
       background: transparent;
-      border-radius: 22px;
-      min-height: 300px;
+      border-radius: var(--border-radius);
+      min-height: 350px;
       max-height: none;
       overflow: visible;
-      z-index: 2;
       font-weight: 400;
       opacity: 0;
-      transform: translateY(60px) scale(0.98);
       pointer-events: none;
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
     }
     .section-content.active {
       display: block;
       opacity: 1;
-      transform: translateY(0) scale(1);
       pointer-events: auto;
       animation: fadeInUp 0.45s cubic-bezier(.6,.01,.35,1.02);
+      position: static;
     }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(60px) scale(0.98);}
       to { opacity: 1; transform: translateY(0) scale(1);}
     }
-    .section-title {
-      font-size: 2.1rem;
+    /* Page Wide Section Box */
+    .big-section-box, .om-mig-box, .mapping-box {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 24px #b6c7b414;
+      margin: 2.4vw auto 3vw auto;
+      padding: 3vw 4vw 2.5vw 4vw;
+      width: 92%;
+      max-width: 1200px;
+      min-width: 700px;
+    }
+
+    /* Om Mig Section */
+    .om-mig-box {
+      padding-bottom: 2vw;
+    }
+    .om-mig-title {
+      font-size: 2rem;
       font-weight: 700;
-      color: #294231;
+      color: var(--title-green);
       margin-top: 0;
-      margin-bottom: 1.1rem;
-      text-align: left;
-      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.8rem;
     }
-    .profile-description {
+    .om-mig-desc {
+      font-size: 1.15rem;
+      margin-bottom: 2.2rem;
       color: #232323;
-      margin-bottom: 1.25rem;
-      font-size: 1.13rem;
-      max-width: 900px;
-      line-height: 1.62;
+      font-weight: 400;
     }
-    .stats-grid {
+    .stats-row {
       display: flex;
-      gap: 28px;
-      justify-content: flex-start;
-      margin-bottom: 24px;
-      margin-top: 3px;
+      gap: 2vw;
+      margin-bottom: 2vw;
+      margin-top: 0.4vw;
     }
-    .stat-item {
-      text-align: center;
-      padding: 12px 20px;
-      background: linear-gradient(120deg, #e6ece2 45%, #f8f8f8 100%);
-      border-radius: 12px;
-      color: #294231;
-      border: 1.5px solid #dde7db;
-      font-family: var(--font-title);
-      font-size: 1.09rem;
-      font-weight: 400;
-      transition: box-shadow 0.15s, transform 0.15s;
-    }
-    .stat-item:hover {
-      box-shadow: 0 3px 20px #b1ccb277;
-      transform: scale(1.07) rotate(-1deg);
-    }
-    .stat-number {
-      font-size: 1.19rem;
-      font-weight: 600;
-      margin-bottom: 1px;
-      letter-spacing: 0.01em;
-    }
-    .stat-label {
-      font-size: 0.98rem;
-      opacity: 0.92;
-      font-weight: 400;
-    }
-    .contact-section, .languages-section {
-      margin-top: 1.1rem;
-      font-weight: 400;
-    }
-    .contact-row {
+    .stat-card {
+      background: linear-gradient(120deg, var(--soft-green) 56%, #f8faf7 100%);
+      color: var(--title-green);
+      border-radius: var(--border-radius);
+      flex: 1 1 0px;
+      min-width: 180px;
+      max-width: 320px;
+      padding: 2.6rem 1.2rem 2.2rem 1.2rem;
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: 700;
+      font-size: 2.1rem;
+      box-shadow: 0 2px 12px #b6c7b412;
+      justify-content: center;
+      border: 1.5px solid var(--soft-green);
+    }
+    .stat-card-label {
+      font-size: 1.03rem;
+      font-weight: 400;
+      margin-top: 9px;
+      color: var(--accent-green);
+      opacity: 0.95;
+    }
+    /* Kontakt & Sprog */
+    .contact-lang-row {
+      display: flex;
+      gap: 6vw;
+      margin-top: 2vw;
       flex-wrap: wrap;
-      gap: 40px 24px;
-      margin-bottom: 10px;
+      justify-content: flex-start;
+      align-items: stretch;
     }
-    .contact-row > div {
-      min-width: 210px;
-      max-width: 360px;
+    .contact-col, .lang-col {
+      flex: 1 1 380px;
+      min-width: 270px;
+    }
+    .contact-title, .lang-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--title-green);
+      margin-bottom: 1.6vw;
+      margin-top: 0.7vw;
+    }
+    .contact-item, .lang-item {
+      font-size: 1.09rem;
+      margin-bottom: 0.8vw;
+      color: #232323;
       display: flex;
       align-items: center;
-      gap: 0.5em;
     }
-    .contact-label {
+    .contact-label, .lang-label {
       font-weight: 600;
-      color: #294231;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 0.01em;
+      color: var(--title-green);
+      margin-right: 0.5em;
+      min-width: 80px;
+      display: inline-block;
     }
-    .contact-value, .language-level {
-      color: #444;
+    .contact-value, .lang-value {
+      font-weight: 400;
+      color: #294231;
+    }
+    .address-row {
+      margin-top: 1vw;
+      font-size: 1.09rem;
+      color: #294231;
+    }
+    hr {
+      border: none;
+      border-top: 1.5px solid var(--soft-green);
+      margin: 2vw 0 2vw 0;
+      width: 100%;
+    }
+    /* Mapping Section */
+    .mapping-box {
+      padding-bottom: 2.2vw;
+      margin-top: 2vw;
+      margin-bottom: 3vw;
+    }
+    .mapping-headline {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--title-green);
+      margin: 0 0 0.37em 0;
+    }
+    .mapping-desc {
+      font-size: 1.15rem;
+      margin-bottom: 2.1vw;
+      color: #232323;
       font-weight: 400;
     }
-    .languages-section .section-title {
-      font-size: 1.13rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    .language-item { margin-bottom: 3px;}
-    /* --- Om Mig Card --- */
-    .om-mig-card {
-      background: linear-gradient(120deg,#e9efdf 65%, #f4f6f2 100%);
-      border-radius: 26px;
-      box-shadow: 0 1px 16px #b6c7b41e;
-      padding: 2.5vw 3vw 2.5vw 3vw;
-      margin-bottom: 2vw;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 2vw;
-    }
-    /* --- Kompetence Mapping --- */
     .mapping-flex {
       display: flex;
       flex-direction: row;
-      gap: 0;
-      align-items: stretch;
-      background: linear-gradient(120deg,#e9efdf 65%, #f4f6f2 100%);
-      border-radius: 26px;
-      box-shadow: 0 1px 16px #b6c7b41e;
-      margin-top: 1.7vw;
+      gap: 2vw;
+      align-items: flex-start;
       margin-bottom: 2vw;
-      padding: 2.5vw 2vw 2.5vw 2vw;
-      min-height: 470px;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .mapping-left {
-      flex: 0 0 46%;
-      min-width: 340px;
-      max-width: 520px;
-      padding-right: 2vw;
+      flex: 1 1 0;
+      min-width: 360px;
+      max-width: 540px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
     }
+    .radar-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--title-green);
+      margin: 1.2vw 0 1.3vw 0;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+    #skillChart { width: 97%; height: 370px !important; min-width: 320px; display: block; }
     .mapping-right {
       flex: 1 1 0;
+      min-width: 340px;
+      max-width: 510px;
+      margin-left: 1vw;
+      margin-right: 1vw;
       display: flex;
       flex-direction: column;
+      align-items: stretch;
+      align-self: stretch;
       justify-content: flex-start;
-      min-width: 320px;
-      max-width: 700px;
-      padding-left: 2vw;
     }
-    #skillChart { width: 98%; height: 340px !important; min-width: 320px; display: block; }
-    .legend { display: flex; gap: 8px; margin-top: 8px; font-size:1.05rem;}
-    .legend-color { width: 13px; height: 13px; border-radius: 50%; }
-    .mapping-niveau { font-size: 1.07rem; margin-top: 14px;}
-    .mapping-detail-title { font-size: 1.25rem; font-weight: 700; color: #294231; margin-bottom: 0.4rem;}
-    .mapping-detail-level { font-size: 1.01rem; font-weight: 400; color: #294231; opacity: 0.95;}
-    .mapping-detail-desc { font-size: 1.06rem; margin-bottom: 1.2rem;}
-    .competency-section { background: #e6ece2; border-radius: 8px; padding: 10px 16px; margin-bottom: 10px; }
-    .competency-section h4 { margin: 0 0 3px 0; font-size: 1.07rem; color: #294231; font-weight: 700;}
-    .competency-section p { margin: 0; font-size: 1.03rem; color: #333;}
-    /* --- Erfaring, Uddannelse, Motivation --- */
-    .section-box {
-      background: linear-gradient(120deg,#e9efdf 65%, #f4f6f2 100%);
-      border-radius: 26px;
-      box-shadow: 0 1px 16px #b6c7b41e;
-      padding: 2.5vw 3vw 2.5vw 3vw;
-      margin-bottom: 2vw;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 2vw;
+    .mapping-detail-card {
+      background: linear-gradient(120deg, var(--soft-green) 98%, #f4f7ef 100%);
+      border-radius: 20px;
+      box-shadow: 0 2px 24px #b6c7b433;
+      color: var(--title-green);
+      padding: 2.2rem 2.2rem 2.1rem 2.2rem;
+      margin-bottom: 0.7vw;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 400;
+      border: 1.5px solid var(--soft-green);
     }
-    /* --- Experience details --- */
-    .experience-item { border: 1.5px solid #dbe5dc; border-radius: 7px; margin-bottom: 13px; overflow: hidden; background: #f8f8f8; box-shadow: 0 1px 8px #c7d5be12; transition: box-shadow 0.15s, transform 0.15s;}
-    .experience-item:hover { box-shadow: 0 4px 18px #b1ccb271; transform: scale(1.01);}
-    .experience-header { padding: 10px 14px; cursor: pointer; background: #e6ece2; font-size: 1.03rem; position: relative; color: #294231; font-weight: 500; transition: background 0.13s, color 0.13s;}
-    .experience-header:hover { background: #dbe5dc; color: #1b331b;}
-    .experience-header:active { background: #c3d1b8;}
-    .experience-header::after { content: "Klik for detaljer"; position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #7e9c85;}
-    .experience-title { font-weight: 600; font-size: 1.01rem; margin-bottom: 1px; }
-    .experience-company { font-size: 0.93rem; opacity: 0.9; font-weight: 400;}
-    .experience-details { padding: 9px 11px 11px 11px; background: #fff; border-top: 1px solid #e3e8e2; display: none; font-weight: 400; animation: fadeInUp 0.3s;}
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px;}
-    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.95rem; font-family: var(--font-title); font-weight: 400;}
-    .motivation-text { color: #294231; background: #e6ece2; border-radius: 7px; padding: 1vw; margin-top: 0.8rem; line-height: 1.65; font-weight: 400;}
-    .experience-details[style*="block"] { animation: fadeInUp 0.3s; }
+    .mapping-detail-title { font-size: 1.26rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .mapping-detail-prolevel {
+      background: #fff;
+      color: var(--title-green);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 15px;
+      padding: 2.5px 14px;
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: middle;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--soft-green);
+    }
+    .mapping-detail-desc { font-size: 1.08rem; margin-bottom: 1.1rem;}
+    .competency-section {
+      background: var(--soft-green);
+      border-radius: 13px;
+      padding: 13px 14px;
+      margin-bottom: 10px;
+      color: var(--title-green);
+      font-size: 1.07rem;
+    }
+    .competency-section h4 {
+      margin: 0 0 5px 0;
+      font-size: 1.05rem;
+      color: var(--title-green);
+      font-weight: 700;
+    }
+    .competency-section p {
+      margin: 0;
+      font-size: 1.07rem;
+      color: #294231;
+      font-weight: 400;
+    }
+    /* Mapping Legend */
+    .mapping-legendbox {
+      background: #fff;
+      border-radius: 14px;
+      margin: 0.9vw auto 0 auto;
+      padding: 1.5vw 1.5vw 1.8vw 1.5vw;
+      width: 98%;
+      max-width: 800px;
+      box-shadow: 0 2px 10px #b6c7b410;
+      color: var(--title-green);
+      font-size: 1.13rem;
+      border: 1.5px solid var(--soft-green);
+    }
+    .legend { display: flex; gap: 14px; align-items: center; margin-bottom: 0.7rem;}
+    .legend-color { width: 15px; height: 15px; border-radius: 50%; }
+    .mapping-niveau {
+      font-size: 1.17rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0.5rem;
+      color: var(--title-green);
+    }
+    .mapping-niveau b, .mapping-niveau .niv {
+      color: var(--title-green);
+      font-weight: 700;
+      margin-right: 0.4em;
+    }
+    /* Erfaring/Uddannelse/Motivation */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--title-green);
+      margin-top: 0;
+      margin-bottom: 1.35rem;
+    }
+    .profile-description {
+      color: #232323;
+      margin-bottom: 1.5rem;
+      font-size: 1.15rem;
+      line-height: 1.62;
+      max-width: 900px;
+    }
+    .experience-item, .motivation-text {
+      background: #fff;
+      border-radius: 13px;
+      margin-bottom: 18px;
+      padding: 1.3rem 2rem 1.3rem 1.6rem;
+      box-shadow: 0 1px 8px #b6c7b110;
+      border: 1.5px solid var(--soft-green);
+    }
+    .experience-header { border: none; background: none; padding: 0; font-weight: 700; color: var(--title-green);}
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 14px;}
+    .skill-tag { background: var(--accent-green); color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.98rem;}
+    .motivation-text { padding: 2.1rem 2rem 2.1rem 1.6rem; font-size: 1.13rem;}
     @media (max-width: 1100px) {
-      .section-content,.section-box,.mapping-flex,.om-mig-card { max-width: 98vw; padding: 2vw 2vw;}
+      .section-content,.big-section-box,.om-mig-box,.mapping-box { max-width: 99vw; padding: 2vw 2vw;}
       .sidebar { width: 100vw; min-width: 0; padding: 24px 0 0 12px; }
       .split-layout { flex-direction: column; }
       .content-area { min-height: 45vh; }
@@ -314,7 +418,6 @@
       .mapping-flex { flex-direction: column; }
       .mapping-left,.mapping-right { max-width: 100vw; min-width: unset; padding:0; }
       #skillChart { width: 100vw !important; min-width: 180px; height: 220px !important;}
-      .skill-details { margin-left: 0; margin-top: 2vw; min-width: unset; max-width: 100%;}
     }
   </style>
 </head>
@@ -332,95 +435,98 @@
       </nav>
     </div>
     <div class="content-area">
+      <!-- Forside -->
       <img src="profile.jpg" alt="Artwork" class="front-image" id="frontimg" />
       <!-- Om Mig -->
       <div class="section-content" id="ommig-section">
-        <div class="om-mig-card">
-          <div class="section-title" style="margin-bottom:0.6rem;">Struktureret koordinator med kreativt drive</div>
-          <div class="profile-description">
+        <div class="om-mig-box">
+          <div class="om-mig-title">Struktureret koordinator med kreativt drive</div>
+          <div class="om-mig-desc">
             Erfaren koordinator med en god blanding af struktur og kreativt kaos.<br>
             Specialist i at holde overblikket, samle folk om fællesmål og løse problemer når de opstår.<br>
             Passioneret omkring marketing der vækker følelser og nysgerrighed.
           </div>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Brands koordineret</div>
+          <div class="stats-row">
+            <div class="stat-card">
+              50+<div class="stat-card-label">Brands koordineret</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-number">3</div>
-              <div class="stat-label">År erfaring</div>
+            <div class="stat-card">
+              3<div class="stat-card-label">År erfaring</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-number">Nyligt Afsluttet</div>
-              <div class="stat-label">Projektledelses kursus</div>
+            <div class="stat-card">
+              Nyligt Afsluttet<div class="stat-card-label">Projektledelses kursus</div>
             </div>
           </div>
-          <div class="contact-section">
-            <div class="section-title" style="font-size:1.27rem; margin-top:1.3rem;">Kontakt</div>
-            <div class="contact-row">
-              <div>
+          <hr>
+          <div class="contact-lang-row">
+            <div class="contact-col">
+              <div class="contact-title">Kontakt</div>
+              <div class="contact-item">
                 <span class="contact-label">Email:</span>
                 <span class="contact-value">annesofieum@outlook.dk</span>
               </div>
-              <div>
+              <div class="contact-item">
                 <span class="contact-label">Telefon:</span>
                 <span class="contact-value">+45 20517479</span>
               </div>
-              <div>
+              <div class="contact-item">
                 <span class="contact-label">LinkedIn:</span>
                 <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197"
                   target="_blank" class="contact-value">Anne Sofie Uhrskov Mikkelsen</a>
               </div>
-              <div>
+              <div class="address-row">
                 <span class="contact-label">Adresse:</span>
                 <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro, Danmark</span>
               </div>
             </div>
-          </div>
-          <div class="languages-section">
-            <div class="section-title" style="font-size:1.13rem;">Sprog</div>
-            <div class="language-item">
-              <span class="contact-label">Dansk:</span>
-              <span class="language-level">Modersmål</span>
-            </div>
-            <div class="language-item">
-              <span class="contact-label">Engelsk:</span>
-              <span class="language-level">Flydende</span>
+            <div class="lang-col">
+              <div class="lang-title">Sprog</div>
+              <div class="lang-item"><span class="lang-label">Dansk</span><span class="lang-value" style="margin-left:auto;">Modersmål</span></div>
+              <div class="lang-item"><span class="lang-label">Engelsk</span><span class="lang-value" style="margin-left:auto;">Flydende</span></div>
             </div>
           </div>
         </div>
       </div>
       <!-- Kompetencer -->
       <div class="section-content" id="kompetencer-section">
-        <div class="section-title">Kompetence Mapping</div>
-        <div class="profile-description">
-          Interaktiv visualisering af mine kompetencer relevante for Marketing Projektleder rollen hos Mad & Kultur.
-        </div>
-        <div class="mapping-flex">
-          <div class="mapping-left">
-            <svg id="skillChart"></svg>
+        <div class="mapping-box">
+          <div class="mapping-headline">Kompetence Mapping</div>
+          <div class="mapping-desc">
+            Interaktiv visualisering af mine kompetencer relevante for Marketing Projektleder rollen hos Mad & Kultur.
+          </div>
+          <div class="mapping-flex">
+            <div class="mapping-left">
+              <div class="radar-title">Marketing Kompetence Radar</div>
+              <svg id="skillChart"></svg>
+            </div>
+            <div class="mapping-right skill-details">
+              <div class="mapping-detail-card default-message">
+                <div class="mapping-detail-title" style="font-size:1.13rem;">Klik på en kompetence</div>
+                <div class="mapping-detail-desc">Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaring.</div>
+              </div>
+            </div>
+          </div>
+          <div class="mapping-legendbox">
             <div class="legend">
-              <div class="legend-color" style="background:#294231"></div>
-              <span>Stærkt niveau</span>
-              <div class="legend-color" style="background:#7e9c85"></div>
+              <div class="legend-color" style="background:var(--legend-dark)"></div>
+              <span>Stærkt niveau (Pro/Ekspert niveau)</span>
+              <div class="legend-color" style="background:var(--legend-light)"></div>
               <span>Udviklingsområder</span>
             </div>
             <div class="mapping-niveau">
-              <b>Niveauer:</b> 1: Begynder &nbsp;2: På vej &nbsp;3: Kompetent &nbsp;4: Pro &nbsp;5: Ekspert
-            </div>
-          </div>
-          <div class="mapping-right skill-details">
-            <div class="default-message">
-              <div class="mapping-detail-title" style="font-size:1.06rem;">Klik på en kompetence</div>
-              <div class="mapping-detail-desc">Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaring.</div>
+              <b>Kompetence Niveauer:</b> 
+              <span class="niv"><b>Niveau 1:</b></span> Begynder
+              <span class="niv"><b>Niveau 2:</b></span> På vej
+              <span class="niv"><b>Niveau 3:</b></span> Kompetent
+              <span class="niv"><b>Niveau 4:</b></span> Pro
+              <span class="niv"><b>Niveau 5:</b></span> Ekspert
             </div>
           </div>
         </div>
       </div>
       <!-- Erfaring -->
       <div class="section-content" id="erfaring-section">
-        <div class="section-box">
+        <div class="big-section-box">
           <div class="section-title">Relevant Erfaring</div>
           <div class="profile-description">
             Min professionelle baggrund og hvordan disse erfaringer oversættes til Marketing Projektleder kompetencer hos Mad & Kultur.
@@ -484,7 +590,7 @@
       </div>
       <!-- Uddannelse -->
       <div class="section-content" id="uddannelse-section">
-        <div class="section-box">
+        <div class="big-section-box">
           <div class="section-title">Uddannelse & Kurser</div>
           <div class="profile-description">
             Relevant uddannelse og kompetenceudvikling der styrker mine kvalifikationer som Marketing Projektleder.
@@ -531,7 +637,7 @@
       </div>
       <!-- Motivation -->
       <div class="section-content" id="motivation-section">
-        <div class="section-box">
+        <div class="big-section-box">
           <div class="section-title">Motivation</div>
           <div class="profile-description">
             Hvorfor jeg brænder for at blive Marketing Projektleder hos Mad & Kultur og bidrage til at skabe autentiske fællesskabsoplevelser for 250.000+ festivalgæster.
@@ -583,7 +689,7 @@
     document.getElementById('frontimg').style.display = "block";
     document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
 
-    // Erfaring toggles with animation
+    // Erfaring toggles
     window.toggleExperience = function(experienceId) {
       var details = document.getElementById(experienceId + '-details');
       if (details) {
@@ -704,10 +810,13 @@
       var skillDetails = document.querySelector('.skill-details');
       if (skillDetails) {
         skillDetails.innerHTML =
-          '<div class="mapping-detail-title">' + skill.name + ' <span class="mapping-detail-level">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></div>' +
-          '<div class="mapping-detail-desc">' + skill.description + '</div>' +
-          '<div class="competency-section"><h4>Mad & Kultur har brug for:</h4><p>' + skill.needsDescription + '</p></div>' +
-          '<div class="competency-section"><h4>Jeg kan bidrage med:</h4><p>' + skill.contribution + '</p></div>';
+          '<div class="mapping-detail-card">' +
+            '<div class="mapping-detail-title">' + skill.name +
+            ' <span class="mapping-detail-prolevel">Pro (' + skill.level + '/5)</span></div>' +
+            '<div class="mapping-detail-desc">' + skill.description + '</div>' +
+            '<div class="competency-section"><h4>Mad & Kultur har brug for:</h4><p>' + skill.needsDescription + '</p></div>' +
+            '<div class="competency-section"><h4>Jeg kan bidrage med:</h4><p>' + skill.contribution + '</p></div>' +
+          '</div>';
       }
     }
     if (document.getElementById('skillChart')) drawRadarChart();
