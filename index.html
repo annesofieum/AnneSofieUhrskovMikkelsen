@@ -1,690 +1,181 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anne Sofie Uhrskov Mikkelsen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --color-main: #294231;
-      --color-bg: #f8faf8;
-      --color-accent: #b1ccb2;
-      --color-meta: #757575;
-      --font-title: 'Playfair Display', serif;
-      --font-body: 'Times New Roman', Times, serif;
-      --content-max-width: 820px;
-    }
-    html, body {
+    body, html {
+      height: 100%;
       margin: 0;
       padding: 0;
-      background: var(--color-bg);
-      font-family: var(--font-body);
-      color: #222;
+      font-family: 'Playfair Display', serif;
+      background: #fff;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .split-layout {
+      display: flex;
+      height: 100vh;
       min-height: 100vh;
       width: 100vw;
+    }
+    .sidebar {
+      width: 420px;
+      min-width: 260px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 32px 0 0 18px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      z-index: 3;
     }
-    body {
-      position: relative;
+    .name-title {
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+      line-height: 1.12;
+      white-space: pre-line;
     }
-    /* -- FRONT PAGE -- */
-    #frontpage {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 30;
-      background: var(--color-bg);
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      margin-left: 1rem;
+    }
+    .menu a {
+      font-size: 1.13rem;
+      color: #444;
+      text-decoration: none;
+      padding: 0.2em 0.6em;
+      border-radius: 7px;
+      transition: background 0.15s, color 0.16s;
+      cursor: pointer;
+      opacity: 0.75;
+      letter-spacing: 0.01em;
+    }
+    .menu a.active, .menu a:hover {
+      background: #eaeede;
+      color: #294231;
+      opacity: 1;
+    }
+    .content-area {
+      flex: 1;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      transition: opacity 0.7s;
+      position: relative;
+      background: #fff;
       overflow: hidden;
     }
-    #front-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.68) blur(1px);
-      min-width: 100vw; min-height: 100vh;
+    .front-image {
+      max-height: 95vh;
+      max-width: 95vw;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      margin: auto;
+      border-radius: 0;
+      box-shadow: 0 6px 56px #d3e1be3f;
+      background: #fff;
     }
-    #front-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.97) 98%);
-      z-index: 1;
-    }
-    .front-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.87);
-      border-radius: 36px;
-      box-shadow: 0 24px 80px #c0dab7af;
-      padding: 56px 36px 48px 36px;
-      margin-bottom: 4vh;
-    }
-    .front-name {
-      font-family: var(--font-title);
-      font-size: 3.3rem;
-      font-weight: 700;
-      color: var(--color-main);
-      letter-spacing: 0.02em;
-      line-height: 1.07;
-      text-align: center;
-      margin-bottom: 0.6rem;
-      margin-top: 0;
-      text-shadow: 0 4px 18px #fff, 0 1px 0 #cfd7c2;
-    }
-    .front-job {
-      font-family: var(--font-title);
-      font-size: 1.47rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 1.7rem;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-      text-align: center;
-    }
-    .front-lead {
-      font-family: var(--font-body);
-      font-size: 1.19rem;
-      color: #232323;
-      margin-bottom: 2.2rem;
-      font-weight: 400;
-      max-width: 500px;
-      line-height: 1.60;
-      text-align: center;
-      text-shadow: 0 3px 12px #fff;
-    }
-    .front-btn {
-      font-family: var(--font-title);
-      font-size: 1.17rem;
-      font-weight: 700;
-      background: linear-gradient(90deg,var(--color-accent) 70%,#cfd7c2 100%);
-      color: #fff;
-      border: none;
-      padding: 18px 46px;
-      border-radius: 36px;
-      cursor: pointer;
-      margin-top: 1.4rem;
-      letter-spacing: 0.05em;
-      transition: filter .18s, background .22s;
-      box-shadow: 0 8px 28px #b1ccb285;
-    }
-    .front-btn:hover {
-      filter: brightness(1.08);
-      background: linear-gradient(90deg,#9bbfa1 90%,#cfd7c2 100%);
-    }
-    /* -- MAIN CV AREA -- */
-    .main-layout {
+    .section-content {
       display: none;
-      min-height: 100vh;
-      width: 100vw;
-      background: var(--color-bg);
-    }
-    .main-layout.active {
-      display: flex;
-    }
-    .side-menu-area {
-      width: 280px;
-      min-width: 180px;
-      background: none;
-      border-right: 1px solid #e3e8e2;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding: 0;
+      width: 100%;
+      max-width: 700px;
+      padding: 3vw 2vw;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      margin: auto;
+      background: #fff;
+      box-shadow: 0 7px 70px 0 #b8bba52c;
+      border-radius: 22px;
+      height: fit-content;
+      min-height: 300px;
+      max-height: 90vh;
+      overflow-y: auto;
       z-index: 2;
-      position: relative;
+      animation: fadeInUp 0.7s cubic-bezier(.6,.01,.35,1.02);
     }
-    .side-menu-inner {
-      padding: 64px 36px 24px 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    .side-menu-title {
-      font-family: var(--font-title);
-      font-size: 2.3rem;
-      font-weight: 700;
-      color: var(--color-main);
-      margin-bottom: 1.9rem;
-      margin-top: 0;
-      letter-spacing: 0.01em;
-      line-height: 1.17;
-      text-align: right;
-      width: 100%;
-    }
-    .nav {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      width: 100%;
-      align-items: flex-end;
-    }
-    .nav a {
-      font-family: var(--font-title);
-      color: var(--color-main);
-      font-size: 1.13rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      border-radius: 8px 20px 20px 8px;
-      padding: 8px 14px 8px 8px;
-      border-left: 3px solid transparent;
-      transition: color 0.18s, background 0.18s;
-      background: none;
-      outline: none;
-      box-shadow: none;
-      cursor: pointer;
-      text-align: right;
+    .section-content.active {
       display: block;
     }
-    .nav a.active, .nav a:focus, .nav a:hover {
-      color: #fff;
-      background: linear-gradient(90deg,var(--color-accent) 80%,#cfd7c2 100%);
-      border-left: 3px solid var(--color-main);
-      text-shadow: 0 2px 8px #b1ccb255;
-    }
-    .main-content-area {
-      flex: 1;
-      min-width: 0;
-      background: none;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-    }
-    .content-section {
-      width: 100%;
-      max-width: var(--content-max-width);
-      margin: 0 auto 40px auto;
-      background: #fff;
-      border-radius: 30px;
-      box-shadow: 0 24px 80px 0 #c8d7c72c;
-      padding: 56px 40px 48px 40px;
-      z-index: 2;
-      animation: fadeInUp 0.6s cubic-bezier(.6,.01,.35,1.02);
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-    }
-    .content-section.active {
-      display: flex;
-    }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(32px);}
+      from { opacity: 0; transform: translateY(70px);}
       to { opacity: 1; transform: translateY(0);}
     }
-    .section-title {
-      font-size: 1.7rem;
-      font-family: var(--font-title);
-      font-weight: 700;
-      color: var(--color-main);
-      letter-spacing: 0.01em;
-      margin-top: 0;
-      margin-bottom: 0.9rem;
-      text-align: left;
-    }
-    .profile-description,
-    .motivation-text,
-    .contact-section,
-    .languages-section,
-    .stats-grid,
-    ul,
-    li,
-    .experience-details {
-      text-align: left;
-      align-self: stretch;
-    }
-    .profile-description,
-    .motivation-text {
-      color: #232323;
-      margin-bottom: 1.25rem;
-      font-size: 1.09rem;
-      max-width: 650px;
-      line-height: 1.62;
-    }
-    .stats-grid {
-      display: flex;
-      gap: 28px;
-      justify-content: flex-start;
-      margin-bottom: 24px;
-      margin-top: 3px;
-    }
-    .stat-item {
-      text-align: center;
-      padding: 12px 20px;
-      background: linear-gradient(120deg, #e6ece2 45%, #f8f8f8 100%);
-      border-radius: 12px;
-      color: var(--color-main);
-      border: 1px solid #dde7db;
-      font-family: var(--font-title);
-      font-size: 1.03rem;
-    }
-    .stat-number {
-      font-size: 1.19rem;
-      font-weight: bold;
-      margin-bottom: 1px;
-    }
-    .stat-label {
-      font-size: 0.98rem;
-      opacity: 0.92;
-    }
-    .contact-section, .languages-section {
-      margin-top: 1.1rem;
-    }
-    .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px 32px;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-    .contact-label {
-      font-weight: bold;
-      color: var(--color-main);
-    }
-    .contact-value, .language-level {
-      color: #444;
-    }
-    .language-item { margin-bottom: 3px;}
-    /* Kompetencer radar - big and wide */
-    .radar-container {
-      display: flex;
-      flex-direction: row;
-      gap: 3vw;
-      align-items: flex-start;
-      margin-top: 1.6rem;
-      background: linear-gradient(120deg,#e6ece2 65%, #f8f8f8 100%);
-      border-radius: 18px;
-      box-shadow: 0 1px 12px #c7d5be18;
-      padding: 2vw 2vw 1vw 2vw;
-      width: 100%;
-      margin-bottom: 1.2rem;
-      min-height: 370px;
-    }
-    #skillChart { width: 340px !important; height: 340px !important; display: block; }
-    .skill-details {
-      max-width: 400px;
-      min-width: 320px;
-      margin-left: 3vw;
-      font-size: 1.09rem;
-      color: var(--color-main);
-      font-family: var(--font-title);
-    }
-    .competency-section { background: #e6ece2; border-radius: 7px; padding: 9px 13px; margin-bottom: 9px; }
-    .competency-section h4 { margin: 0 0 3px 0; font-size: 1rem; color: var(--color-main);}
-    .competency-section p { margin: 0; font-size: 1.01rem; color: #333;}
-    .legend { display: flex; gap: 8px; margin-top: 8px;}
-    .legend-color { width: 13px; height: 13px; border-radius: 50%; }
-    .experience-item { border: 1.5px solid #dbe5dc; border-radius: 7px; margin-bottom: 13px; overflow: hidden; background: #f8f8f8; box-shadow: 0 1px 8px #c7d5be12;}
-    .experience-header { padding: 10px 14px; cursor: pointer; background: #e6ece2; font-size: 1.03rem; position: relative; color: var(--color-main); font-family: var(--font-title);}
-    .experience-header:hover { background: #dbe5dc; }
-    .experience-header::after { content: "Klik for detaljer"; position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #7e9c85;}
-    .experience-title { font-weight: bold; font-size: 1.01rem; margin-bottom: 1px; }
-    .experience-company { font-size: 0.93rem; opacity: 0.9;}
-    .experience-details { padding: 9px 11px 11px 11px; background: #fff; border-top: 1px solid #e3e8e2; display: none; }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px;}
-    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.95rem; font-family: var(--font-title); }
-    .motivation-text { color: var(--color-main); background: #e6ece2; border-radius: 7px; padding: 1vw; margin-top: 0.8rem; line-height: 1.65;}
-    .tilbage-btn {
-      position: fixed;
-      right: 3vw;
-      bottom: 3vw;
-      z-index: 999;
-      font-family: var(--font-title);
-      font-size: 1.09rem;
-      font-weight: 700;
-      background: linear-gradient(90deg,#b1ccb2 70%,#cfd7c2 100%);
-      color: #fff;
-      border: none;
-      padding: 13px 38px;
-      border-radius: 32px;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      box-shadow: 0 4px 18px #b1ccb285;
-      opacity: 0.91;
-      transition: background 0.2s, filter 0.2s;
-    }
-    .tilbage-btn:hover {
-      filter: brightness(1.09);
-      background: linear-gradient(90deg,#9bbfa1 90%,#cfd7c2 100%);
-    }
     @media (max-width: 900px) {
-      .side-menu-area { width: 100vw; max-width: 100vw; min-width: 0; align-items: center; border-right: none;}
-      .side-menu-inner { padding: 24px 0 18px 0; }
-      .side-menu-title { font-size: 1.2rem; margin-bottom: 1.2rem;}
-      .main-layout { flex-direction: column; }
-      .main-content-area { height: auto; min-height: 220px;}
-      .content-section { padding: 18px 5vw 14px 5vw;}
-      .stats-grid, .contact-grid { flex-direction: column; gap: 10px;}
-      .radar-container { flex-direction: column; min-height: 250px;}
-      #skillChart { width: 95vw !important; min-width: 180px; height: 220px !important;}
-      .skill-details { margin-left: 0; margin-top: 2vw; min-width: unset; max-width: 100%;}
-      .tilbage-btn { right: 6vw; bottom: 2vw; padding: 11px 22px; font-size: 1rem;}
-      .front-content { padding: 36px 10vw 30px 10vw; }
-    }
-    .header-email {
-      position: absolute;
-      top: 2.5rem;
-      right: 2.5rem;
-      font-size: 1.01rem;
-      color: var(--color-main);
-      z-index: 5;
-      font-family: var(--font-title);
-    }
-    .header-email a {
-      color: var(--color-main);
-      text-decoration: none;
-    }
-    .header-email a:hover {
-      color: #7e9c85;
-      text-decoration: underline;
+      .split-layout { flex-direction: column; }
+      .sidebar { width: 100vw; min-width: 0; padding: 24px 0 0 12px; }
+      .content-area { min-height: 45vh; }
+      .front-image { max-width: 98vw; max-height: 40vh; }
+      .section-content { position: static; max-width: 98vw; }
     }
   </style>
 </head>
 <body>
-  <div class="header-email">
-    <a href="mailto:annesofieum@outlook.dk">annesofieum@outlook.dk</a>
-  </div>
-  
-  <!-- FRONT PAGE -->
-  <div id="frontpage">
-    <img src="profile.jpg" alt="" id="front-bg" />
-    <div id="front-overlay"></div>
-    <div class="front-content">
-      <div class="front-name">Anne Sofie Uhrskov Mikkelsen</div>
-      <div class="front-job">Marketing Projektleder</div>
-      <div class="front-lead">
-        Erfaren koordinator med en balanceret blanding af struktur og kreativitet.<br>
-        Specialist i at holde overblikket, samle folk om fælles mål og løse problemer når de opstår.<br>
-        Passioneret omkring marketing, der vækker følelser og nysgerrighed.
+  <div class="split-layout">
+    <div class="sidebar">
+      <div class="name-title">Anne Sofie Uhrskov<br>Mikkelsen</div>
+      <nav class="menu">
+        <a href="#" data-section="front" class="active">Om mig</a>
+        <a href="#" data-section="erfaring">Erfaring</a>
+      </nav>
+    </div>
+    <div class="content-area">
+      <!-- The artwork, shown on "Om mig" -->
+      <img src="your-artwork.jpg" alt="Artwork" class="front-image" id="frontimg" />
+      <!-- Section: Om mig (example content) -->
+      <div class="section-content" id="front-section">
+        <!-- You can add your "Om mig" content here if you want text overlay instead of the image -->
       </div>
-      <button class="front-btn" id="openCVBtn">Gå til profil</button>
+      <!-- Section: Erfaring -->
+      <div class="section-content" id="erfaring-section">
+        <h2 style="margin-top:0;">Erfaring</h2>
+        <p>
+          Din erfaringstekst, jobs, datoer, og relevante beskrivelser kommer her. <br>
+          Du kan tilføje flere sektioner og indhold som du ønsker.
+        </p>
+      </div>
     </div>
   </div>
-  
-  <!-- MAIN CV AREA -->
-  <div class="main-layout">
-    <aside class="side-menu-area">
-      <div class="side-menu-inner">
-        <div class="side-menu-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
-        <nav class="nav">
-          <a href="#" data-section="ommig" class="active">Om Mig</a>
-          <a href="#" data-section="kompetencer">Kompetencer</a>
-          <a href="#" data-section="erfaring">Erfaring</a>
-          <a href="#" data-section="uddannelse">Uddannelse</a>
-          <a href="#" data-section="motivation">Motivation</a>
-        </nav>
-      </div>
-    </aside>
-    <main class="main-content-area">
-      <!-- Om Mig -->
-      <section id="ommig" class="content-section active">
-        <div class="section-title">Struktureret koordinator med kreativt drive</div>
-        <div class="profile-description">
-          Erfaren koordinator med en god blanding af struktur og kreativt kaos.<br>
-          Specialist i at holde overblikket, samle folk om fællesmål og løse problemer når de opstår.<br>
-          Passioneret omkring marketing der vækker følelser og nysgerrighed.
-        </div>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Brands koordineret</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">3</div>
-            <div class="stat-label">År erfaring</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Nyligt Afsluttet</div>
-            <div class="stat-label">Projektledelses kursus</div>
-          </div>
-        </div>
-        <div class="contact-section">
-          <div class="section-title" style="font-size:1.27rem;">Kontakt</div>
-          <div class="contact-grid">
-            <div>
-              <div class="contact-label">Email:</div> 
-              <span class="contact-value">annesofieum@outlook.dk</span><br>
-              <div class="contact-label">Telefon:</div> 
-              <span class="contact-value">+45 20517479</span><br>
-              <div class="contact-label">LinkedIn:</div> 
-              <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197" 
-                target="_blank" class="contact-value">Anne Sofie Uhrskov Mikkelsen</a>
-            </div>
-            <div>
-              <div class="contact-label">Adresse:</div> 
-              <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro, Danmark</span>
-            </div>
-          </div>
-        </div>
-        <div class="languages-section">
-          <div class="section-title" style="font-size:1.13rem;">Sprog</div>
-          <div class="language-item">
-            <span class="contact-label">Dansk:</span>
-            <span class="language-level">Modersmål</span>
-          </div>
-          <div class="language-item">
-            <span class="contact-label">Engelsk:</span>
-            <span class="language-level">Flydende</span>
-          </div>
-        </div>
-      </section>
-      <!-- Kompetencer -->
-      <section id="kompetencer" class="content-section">
-        <div class="section-title">Kompetence Mapping</div>
-        <div class="profile-description">
-          Interaktiv visualisering af mine kompetencer relevante for Marketing Projektleder rollen hos Mad & Kultur.
-        </div>
-        <div class="radar-container">
-          <div>
-            <svg id="skillChart"></svg>
-            <div class="legend">
-              <div class="legend-color" style="background:#294231"></div>
-              <span>Stærkt niveau</span>
-              <div class="legend-color" style="background:#7e9c85"></div>
-              <span>Udviklingsområder</span>
-            </div>
-            <div style="font-size: 1.06rem; color:#294231; margin-top: 8px;">
-              <b>Niveauer:</b> 1: Begynder &nbsp;2: På vej &nbsp;3: Kompetent &nbsp;4: Pro &nbsp;5: Ekspert
-            </div>
-          </div>
-          <div class="skill-details">
-            <div class="default-message">
-              <h3 style="font-size:1.08rem;margin:0 0 2px 0;">Klik på en kompetence</h3>
-              <p style="margin:0;">Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaring.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Erfaring -->
-      <section id="erfaring" class="content-section">
-        <div class="section-title">Relevant Erfaring</div>
-        <div class="profile-description">
-          Min professionelle baggrund og hvordan disse erfaringer oversættes til Marketing Projektleder kompetencer hos Mad & Kultur.
-        </div>
-        <!-- ... Erfaring content unchanged ... -->
-      </section>
-      <!-- Uddannelse -->
-      <section id="uddannelse" class="content-section">
-        <div class="section-title">Uddannelse & Kurser</div>
-        <div class="profile-description">
-          Relevant uddannelse og kompetenceudvikling der styrker mine kvalifikationer som Marketing Projektleder.
-        </div>
-        <!-- ... Uddannelse content unchanged ... -->
-      </section>
-      <!-- Motivation -->
-      <section id="motivation" class="content-section">
-        <div class="section-title">Motivation</div>
-        <div class="profile-description">
-          Hvorfor jeg brænder for at blive Marketing Projektleder hos Mad & Kultur og bidrage til at skabe autentiske fællesskabsoplevelser for 250.000+ festivalgæster.
-        </div>
-        <!-- ... Motivation content unchanged ... -->
-      </section>
-      <button class="tilbage-btn" id="backToFront">Tilbage</button>
-    </main>
-  </div>
   <script>
-    // Show main layout
-    document.getElementById('openCVBtn').onclick = function() {
-      document.getElementById('frontpage').style.display = 'none';
-      document.querySelector('.main-layout').classList.add('active');
-      document.body.style.overflow = '';
-    };
-    // Back to front page
-    document.getElementById('backToFront').onclick = function() {
-      document.getElementById('frontpage').style.display = 'flex';
-      document.querySelector('.main-layout').classList.remove('active');
-      document.body.style.overflow = 'hidden';
-    };
-    // Tab navigation
-    window.onload = function() {
-      document.body.style.overflow = 'hidden';
-      document.querySelectorAll('.nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-          document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-          let sec = document.getElementById(this.dataset.section);
+    // Menu tab logic
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.menu a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        // Hide all content sections
+        document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+        // Show image or section
+        if (this.dataset.section === "front") {
+          document.getElementById('frontimg').style.display = "block";
+        } else {
+          document.getElementById('frontimg').style.display = "none";
+          let sec = document.getElementById(this.dataset.section + '-section');
           if(sec) sec.classList.add('active');
-        });
+        }
+        // Hide all but selected section
+        if (this.dataset.section !== "front") {
+          document.getElementById('front-section').classList.remove('active');
+        }
+        else {
+          document.getElementById('front-section').classList.add('active');
+          document.getElementById('erfaring-section').classList.remove('active');
+        }
       });
-      window.toggleExperience = function(experienceId) {
-        var details = document.getElementById(experienceId + '-details');
-        if (details) {
-          if (details.style.display === 'block') {
-            details.style.display = 'none';
-          } else {
-            document.querySelectorAll('.experience-details').forEach(d => d.style.display = 'none');
-            details.style.display = 'block';
-          }
-        }
-      }
-      // Kompetencer radar logic
-      var skills = [
-        { name: "Projektledelse & Koordination", level: 4, description: "Jeg er en god blanding af struktur og kreativt kaos - elsker at være den koordinerende kraft der holder overblikket og samler folk om fællesmål.", needsDescription: "Ansvar for årshjul, planlægning og koordination af alle marketing aktiviteter", contribution: "Naturlig koordinator der trives som 'blæksprutte' for teams. Nyligt gennemført projektledelseskursus giver formelle værktøjer til min naturlige tilgang til problemløsning og koordination." },
-        { name: "Tværfagligt Samarbejde", level: 5, description: "Jeg er god til at lytte til folk og samle dem om fællesmål. Rationel og fair tilgang gør koordination af teams naturligt for mig.", needsDescription: "Ugentlige møder med grafikere, fotografer, SoMe medarbejdere og koordination med eksterne samarbejdspartnere", contribution: "Hos Adjutant var jeg den, folk kom til når teams skulle koordineres og problemer løses. Min tilgang bygger på at lytte ordentligt og finde løsninger der virker for alle involverede." },
-        { name: "Markedsanalyse & Data", level: 5, description: "Dyb erfaring med markedsanalyse og datafortolkning fra arbejde med internationale brands og markedstendenser.", needsDescription: "Effektmålinger, analyser og datadrevet beslutningstagning for festival marketing", contribution: "Omfattende erfaring med at analysere markedsdata fra 50+ brands og omsætte insights til strategiske anbefalinger. Stærke Excel skills og evne til at identificere trends og muligheder." },
-        { name: "Brand & Storytelling", level: 4, description: "Solid erfaring med brand kommunikation og storytelling, særligt omkring værdier som bæredygtighed og fællesskab.", needsDescription: "Branding, identitet og kommunikation der skaber engagement omkring Mad & Kulturs værdier", contribution: "Erfaring med storytelling omkring bæredygtige værdier og community building. Evne til at kommunikere komplekse værdier på autentiske måder der resonerer med målgrupper." },
-        { name: "Digital Marketing Kanaler", level: 3, description: "Grundlæggende forståelse af digitale marketing platforme med stærk motivation for at udvikle kompetencer inden for Meta, WordPress og email marketing.", needsDescription: "Meta annoncering (Facebook & Instagram), WordPress hjemmesider, email-marketing og online kanaler", contribution: "Solid fundament i digitale platforme og hurtig til at tilegne mig nye værktøjer." },
-        { name: "Event & Festival Marketing", level: 2, description: "Nyt område med stor motivation for at lære festival marketing og forstå de særlige udfordringer ved event promotion og gæste-kunderejsen.", needsDescription: "Forståelse af festival marketing, billetsalg-marketing og gæste-kunderejsen fra awareness til post-event", contribution: "Mens jeg er ny i event marketing, bringer jeg struktureret tilgang og friske perspektiver." },
-        { name: "Performance Tracking & ROI", level: 3, description: "Erfaring med performance måling og optimering gennem salgsdata analyse og kontinuerlig forbedring af processer.", needsDescription: "Systematisk tracking af marketing performance og ROI på tværs af alle kanaler", contribution: "Stærk motivation for at blive endnu dygtigere." },
-        { name: "PR & Netværk Relations", level: 3, description: "Grundlæggende erfaring med stakeholder relations og kommunikation, som kan udvikles til PR og presseindsatser.", needsDescription: "PR, presseindsatser og netværks- og relationsmarkedsføring i lokalsamfund", contribution: "Stærke kommunikationsevner og erfaring med at arbejde med eksterne partnere og stakeholders på tværs af forskellige arbejdsområder." }
-      ];
-      window.drawRadarChart = function() {
-        var svg = document.getElementById('skillChart');
-        if (!svg) return;
-        svg.setAttribute('viewBox', '0 0 340 340');
-        svg.innerHTML = '';
-        var center = { x: 170, y: 170 };
-        var maxRadius = 120;
-        var levels = 5;
-        var angleStep = (2 * Math.PI) / skills.length;
-        for (var i = 1; i <= levels; i++) {
-          var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          circle.setAttribute('cx', center.x);
-          circle.setAttribute('cy', center.y);
-          circle.setAttribute('r', (maxRadius / levels) * i);
-          circle.setAttribute('fill', 'none');
-          circle.setAttribute('stroke', '#b7c7b0');
-          circle.setAttribute('stroke-width', '1');
-          svg.appendChild(circle);
-        }
-        for (var i = 0; i < skills.length; i++) {
-          var angle = (i * angleStep) - (Math.PI / 2);
-          var x = center.x + Math.cos(angle) * maxRadius;
-          var y = center.y + Math.sin(angle) * maxRadius;
-          var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-          line.setAttribute('x1', center.x);
-          line.setAttribute('y1', center.y);
-          line.setAttribute('x2', x);
-          line.setAttribute('y2', y);
-          line.setAttribute('stroke', '#b7c7b0');
-          line.setAttribute('stroke-width', '1');
-          svg.appendChild(line);
-        }
-        var points = [];
-        for (var i = 0; i < skills.length; i++) {
-          var angle = (i * angleStep) - (Math.PI / 2);
-          var radius = (skills[i].level / levels) * maxRadius;
-          var x = center.x + Math.cos(angle) * radius;
-          var y = center.y + Math.sin(angle) * radius;
-          points.push(x + ',' + y);
-        }
-        var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-        polygon.setAttribute('points', points.join(' '));
-        polygon.setAttribute('fill', 'rgba(41,66,49,0.10)');
-        polygon.setAttribute('stroke', '#294231');
-        polygon.setAttribute('stroke-width', '2');
-        svg.appendChild(polygon);
-        for (var i = 0; i < skills.length; i++) {
-          var skill = skills[i];
-          var angle = (i * angleStep) - (Math.PI / 2);
-          var radius = (skill.level / levels) * maxRadius;
-          var x = center.x + Math.cos(angle) * radius;
-          var y = center.y + Math.sin(angle) * radius;
-          var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          point.setAttribute('cx', x);
-          point.setAttribute('cy', y);
-          point.setAttribute('r', skill.level >= 4 ? '10' : '8');
-          point.setAttribute('fill', skill.level >= 4 ? '#294231' : '#7e9c85');
-          point.setAttribute('stroke', 'white');
-          point.setAttribute('stroke-width', '2');
-          point.style.cursor = "pointer";
-          point.skillData = skill;
-          point.onclick = function() { showSkillDetails(this.skillData); };
-          svg.appendChild(point);
-          var labelRadius = maxRadius + 27;
-          var labelX = center.x + Math.cos(angle) * labelRadius;
-          var labelY = center.y + Math.sin(angle) * labelRadius;
-          var lines = skill.name.split(' & ');
-          for (var li=0; li<lines.length; li++) {
-            var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('x', labelX);
-            text.setAttribute('y', labelY + li*14 - (lines.length-1)*7);
-            text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
-            text.setAttribute('dominant-baseline', 'middle');
-            text.setAttribute('font-size', '15');
-            text.setAttribute('fill', '#294231');
-            text.textContent = lines[li];
-            text.style.cursor = "pointer";
-            text.skillData = skill;
-            text.onclick = function() { showSkillDetails(this.skillData); };
-            svg.appendChild(text);
-          }
-        }
-      }
-      window.showSkillDetails = function(skill) {
-        var levelNames = ['', 'Begynder', 'På vej', 'Kompetent', 'Pro', 'Ekspert'];
-        var skillDetails = document.querySelector('.skill-details');
-        if (skillDetails) {
-          skillDetails.innerHTML = 
-            '<h3 style="margin:0 0 6px 0;font-size:1.09rem;">' + skill.name + ' <span style="font-size:0.97rem;color:#294231;">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
-            '<p style="color:#294231;font-size:1.04rem;">' + skill.description + '</p>' +
-            '<div class="competency-section"><h4>Mad & Kultur har brug for:</h4><p>' + skill.needsDescription + '</p></div>' +
-            '<div class="competency-section"><h4>Jeg kan bidrage med:</h4><p>' + skill.contribution + '</p></div>';
-        }
-      }
-      window.drawRadarChart();
-      document.querySelectorAll('.experience-details').forEach(d => d.style.display = 'none');
-    };
+    });
+    // Show only image on page load
+    document.getElementById('frontimg').style.display = "block";
+    document.getElementById('front-section').classList.remove('active');
+    document.getElementById('erfaring-section').classList.remove('active');
   </script>
 </body>
 </html>
