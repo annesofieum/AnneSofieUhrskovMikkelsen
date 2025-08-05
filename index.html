@@ -65,9 +65,11 @@
       font-family: 'Times New Roman', Times, serif;
       transition: color 0.2s;
       padding: 0.2rem 0;
+      cursor: pointer;
     }
-    .nav a:hover {
+    .nav a.active, .nav a:hover {
       color: #666;
+      text-decoration: underline;
     }
     .main-image-area {
       flex: 1;
@@ -78,6 +80,7 @@
       justify-content: stretch;
       overflow: hidden;
       min-width: 0;
+      background: #eee;
     }
     .main-image-area img {
       width: 100%;
@@ -86,24 +89,60 @@
       display: block;
       border-radius: 0 24px 24px 0;
       box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      transition: opacity 0.4s;
     }
-    /* Email top right */
-    .header-email {
+    .content-section {
       position: absolute;
-      top: 2.5rem;
-      right: 2.5rem;
-      font-size: 1.1rem;
-      color: #222;
-      z-index: 50;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.95);
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow-y: auto;
+      padding: 4vw 6vw 3vw 4vw;
+      z-index: 10;
+      animation: fadeIn 0.5s;
+    }
+    .content-section.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-weight: normal;
       font-family: 'Times New Roman', Times, serif;
     }
-    .header-email a {
+    .tilbage-btn {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
       color: #222;
-      text-decoration: none;
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 0.4rem 1.2rem;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      transition: background 0.2s;
     }
-    .header-email a:hover {
-      color: #666;
-      text-decoration: underline;
+    .tilbage-btn:hover {
+      background: #eee;
+    }
+    /* Example slider for interactivity */
+    .slider-demo {
+      width: 300px;
+      margin: 1.2rem 0;
+    }
+    .slider-value {
+      font-size: 1.1rem;
+      margin-left: 1rem;
     }
     /* Responsive for mobile */
     @media (max-width: 900px) {
@@ -138,11 +177,27 @@
       .main-image-area img {
         border-radius: 0 0 24px 24px;
       }
-      .header-email {
-        position: static;
-        text-align: center;
-        margin: 0.5rem auto 0.5rem auto;
+      .content-section {
+        padding: 8vw 2vw 3vw 2vw;
       }
+    }
+    /* Email top right */
+    .header-email {
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      z-index: 50;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .header-email a {
+      color: #222;
+      text-decoration: none;
+    }
+    .header-email a:hover {
+      color: #666;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -154,16 +209,110 @@
     <aside class="side-menu-area">
       <div class="side-menu-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
       <nav class="nav">
-        <a href="#praktisk">Det praktiske</a>
-        <a href="#uddannelse">Uddannelse</a>
-        <a href="#erfaring">Erfaring</a>
-        <a href="#kompetencer">Kompetencer</a>
-        <a href="#motivation">Motivation</a>
+        <a href="#" data-section="praktisk" class="active">Det praktiske</a>
+        <a href="#" data-section="uddannelse">Uddannelse</a>
+        <a href="#" data-section="erfaring">Erfaring</a>
+        <a href="#" data-section="kompetencer">Kompetencer</a>
+        <a href="#" data-section="motivation">Motivation</a>
       </nav>
     </aside>
-    <main class="main-image-area">
-      <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen">
+    <main class="main-image-area" id="main-content">
+      <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen" id="profile-img">
+      <!-- Det praktiske (example content, visible by default) -->
+      <section id="praktisk" class="content-section active">
+        <h2 class="section-title">Det praktiske</h2>
+        <p>Her kan du finde praktisk information, fx:</p>
+        <ul>
+          <li>Bopæl: København</li>
+          <li>Født: 1990</li>
+          <li>Kørekort: Ja</li>
+          <li>Mail: <a href="mailto:annesofieum@outlook.dk">annesofieum@outlook.dk</a></li>
+        </ul>
+        <button class="tilbage-btn" onclick="showImage()">Tilbage</button>
+      </section>
+      <!-- Uddannelse (example with interactive element) -->
+      <section id="uddannelse" class="content-section">
+        <h2 class="section-title">Uddannelse</h2>
+        <p>Her kan du udforske min uddannelsesbaggrund. Prøv at justere årstallet:</p>
+        <label for="year-slider">Vælg år:</label>
+        <input type="range" min="2010" max="2023" value="2018" class="slider-demo" id="year-slider">
+        <span class="slider-value" id="slider-value">2018</span>
+        <div id="uddannelse-content" style="margin-top:1.5rem;">
+          <!-- Content changes interactively -->
+          <p><strong>2017-2019:</strong> Kandidat i Læring og Forandringsprocesser, AAU</p>
+        </div>
+        <button class="tilbage-btn" onclick="showImage()">Tilbage</button>
+      </section>
+      <!-- Erfaring (static demo) -->
+      <section id="erfaring" class="content-section">
+        <h2 class="section-title">Erfaring</h2>
+        <p>Her er et uddrag af min erhvervserfaring:</p>
+        <ul>
+          <li><strong>2022-2025:</strong> Projektleder, Firma X</li>
+          <li><strong>2019-2022:</strong> Konsulent, Firma Y</li>
+        </ul>
+        <button class="tilbage-btn" onclick="showImage()">Tilbage</button>
+      </section>
+      <!-- Kompetencer (interactive demo) -->
+      <section id="kompetencer" class="content-section">
+        <h2 class="section-title">Kompetencer</h2>
+        <p>Klik på en kompetence for at læse mere:</p>
+        <ul>
+          <li><button onclick="alert('Projektledelse: Erfaring med både agile og klassiske metoder.')" class="tilbage-btn">Projektledelse</button></li>
+          <li><button onclick="alert('Kommunikation: Bred erfaring med formidling og samarbejde.')" class="tilbage-btn">Kommunikation</button></li>
+          <li><button onclick="alert('Analyse: Stærke analytiske evner og datadrevet tilgang.')" class="tilbage-btn">Analyse</button></li>
+        </ul>
+        <button class="tilbage-btn" onclick="showImage()">Tilbage</button>
+      </section>
+      <!-- Motivation (static demo) -->
+      <section id="motivation" class="content-section">
+        <h2 class="section-title">Motivation</h2>
+        <p>Jeg brænder for at skabe forandring og udvikling gennem samarbejde og nytænkning. Mit mål er altid at gøre en forskel!</p>
+        <button class="tilbage-btn" onclick="showImage()">Tilbage</button>
+      </section>
     </main>
   </div>
+  <script>
+    // Menu navigation logic
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Remove active from all menu links
+        document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        // Hide all content sections
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        // Hide image
+        document.getElementById('profile-img').style.opacity = '0.18';
+        // Show chosen section
+        let sec = document.getElementById(this.dataset.section);
+        if(sec) sec.classList.add('active');
+      });
+    });
+    // Tilbage button logic: show image, hide sections, reset menu
+    function showImage() {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('profile-img').style.opacity = '1';
+      document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+    }
+    // Demo: slider for uddannelse
+    const slider = document.getElementById('year-slider');
+    const sliderValue = document.getElementById('slider-value');
+    const uddContent = document.getElementById('uddannelse-content');
+    if(slider && sliderValue && uddContent) {
+      slider.addEventListener('input', function() {
+        sliderValue.textContent = this.value;
+        // Example: display different education for different years
+        let year = Number(this.value);
+        if (year < 2014) {
+          uddContent.innerHTML = "<p><strong>2010-2013:</strong> Bachelor i Kommunikation, AAU</p>";
+        } else if (year < 2020) {
+          uddContent.innerHTML = "<p><strong>2017-2019:</strong> Kandidat i Læring og Forandringsprocesser, AAU</p>";
+        } else {
+          uddContent.innerHTML = "<p><strong>2020-2023:</strong> Diverse efteruddannelser og kurser</p>";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
