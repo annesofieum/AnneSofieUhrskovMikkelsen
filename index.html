@@ -27,20 +27,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 60vh;
-      gap: 2.5rem;
+      min-height: 70vh;
+      gap: 3rem;
     }
-    .hero img {
-  width: 600px; 
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 2px 32px rgba(0,0,0,0.07);
-}
+    .hero-img {
+      width: 60vw;
+      max-width: 900px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 2px 32px rgba(0,0,0,0.08);
+      background: #fff;
+      display: block;
     }
     .hero-title {
       font-size: 4rem;
       font-weight: 700;
       line-height: 1;
+      margin-bottom: 1.5rem;
+      word-break: break-word;
     }
     .cta {
       margin-top: 1.5rem;
@@ -56,17 +61,17 @@
       align-items: flex-end;
       padding: 2rem;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .hero-section {
         flex-direction: column;
         gap: 1.5rem;
       }
+      .hero-img {
+        width: 95vw;
+        max-width: 99vw;
+      }
       .hero-title {
         font-size: 2.2rem;
-      }
-      .hero-img {
-        width: 90vw;
-        max-width: 340px;
       }
     }
   </style>
@@ -81,7 +86,7 @@
       </nav>
     </div>
     <div>
-      <a href="mailto:din@email.dk">annesofieum@outlook.dk</a>
+      <a href="mailto:annesofieum@outlook.dk">annesofieum@outlook.dk</a>
     </div>
   </header>
   <main>
@@ -98,9 +103,8 @@
       <a href="#">LinkedIn</a>
     </div>
     <div>
-      <a href="mailto:annesofieum@outlook.dk">Kontakt mig</a>
+      <a href="mailto:annesofieum@outlook.dk">Skal vi snakke?</a>
     </div>
   </footer>
 </body>
-
 </html>
