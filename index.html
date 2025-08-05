@@ -10,9 +10,9 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      background: radial-gradient(ellipse at 60% 45%, #f6f3ef 70%, #dbe5dc 100%);
+      background: radial-gradient(ellipse at 50% 0%, #f9faf8 60%, #e7ede6 100%);
       font-family: 'Times New Roman', Times, serif;
-      color: #222;
+      color: #232323;
       min-height: 100vh;
       width: 100vw;
       box-sizing: border-box;
@@ -24,6 +24,7 @@
       padding: 0;
       width: 100vw;
       box-sizing: border-box;
+      letter-spacing: 0.01em;
     }
     .main-layout {
       display: flex;
@@ -33,146 +34,137 @@
       max-width: 100vw;
     }
     .side-menu-area {
-      width: 320px;
-      min-width: 210px;
-      max-width: 380px;
+      width: 275px;
+      min-width: 180px;
+      max-width: 340px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: flex-start;
-      padding-left: 3vw;
-      padding-right: 1vw;
+      padding: 48px 2vw 0 3vw;
       background: none;
       z-index: 2;
       position: relative;
-      border-right: 1.5px solid #e3e8e2;
+      border-right: 1px solid #e3e8e2;
       min-height: 100vh;
+      box-sizing: border-box;
     }
     .side-menu-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
+      font-size: 2.1rem;
       font-weight: 700;
       color: #294231;
-      letter-spacing: 0.02em;
-      border-bottom: 2.5px solid #c7d5be;
-      padding-bottom: 10px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.3rem;
       margin-top: 0;
-      background: linear-gradient(90deg, #e5ede2 60%, #fff0 100%);
-      width: 96%;
-      border-radius: 0 0 18px 0;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      width: 100%;
+    }
+    .side-menu-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.4rem;
+      border: 3px solid #e3e8e2;
+      box-shadow: 0 2px 10px #c8d7c7aa;
+      background: #fff;
     }
     .nav {
       display: flex;
       flex-direction: column;
-      gap: 2.1rem;
+      gap: 1.3rem;
       align-items: flex-start;
       width: 100%;
     }
     .nav a {
       color: #294231;
       text-decoration: none;
-      font-size: 1.23rem;
+      font-size: 1.07rem;
       font-family: 'Playfair Display', serif;
+      font-weight: 500;
       letter-spacing: 0.01em;
-      transition: color 0.2s, background 0.2s, padding 0.2s;
-      padding: 0.3rem 0.8rem 0.3rem 0.5rem;
-      border-radius: 8px 20px 20px 8px;
+      transition: color 0.17s, background 0.17s, padding 0.17s;
+      padding: 7px 12px 7px 0;
+      border-radius: 6px 16px 16px 6px;
       cursor: pointer;
-      font-weight: 600;
       background: none;
-      border-left: 4px solid #fff0;
+      border-left: 3px solid transparent;
       outline: none;
       box-shadow: none;
     }
     .nav a.active, .nav a:focus, .nav a:hover {
       color: #fff;
-      background: linear-gradient(90deg,#b1ccb2 60%,#c3cdb6 100%);
-      border-left: 4px solid #294231;
-      padding-left: 1.2rem;
-      text-shadow: 0 2px 12px #b1ccb250;
+      background: linear-gradient(90deg,#b8ccb3 80%,#cfd7c2 100%);
+      border-left: 3px solid #294231;
+      padding-left: 12px;
+      text-shadow: 0 2px 8px #b1ccb255;
     }
     .main-content-area {
       flex: 1;
-      position: relative;
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
       min-width: 0;
       background: none;
       z-index: 1;
-    }
-    .main-image-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      border-radius: 0 0 38px 38px;
-      box-shadow: 0 12px 60px 0 #b8bba5a8;
-      opacity: 0.96;
-      transition: opacity 0.5s;
-      filter: contrast(1.05) brightness(1.07) blur(0.5px);
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 100vh;
     }
     .content-center-wrap {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 85vh;
-      height: 100%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      min-height: 100vh;
       width: 100%;
       position: relative;
       z-index: 1;
+      padding: 48px 0 36px 0;
     }
     .content-section {
-      position: relative;
       width: 100%;
-      max-width: 750px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.93);
-      box-shadow: 0 7px 70px 0 #b8bba52c;
-      border-radius: 26px;
-      padding: 3.5vw 4vw 3vw 4vw;
+      max-width: 730px;
+      margin: 0 auto 36px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px 0 #c8d7c72c;
+      padding: 44px 48px 36px 48px;
       z-index: 2;
-      animation: fadeInUp 0.7s cubic-bezier(.6,.01,.35,1.02);
+      animation: fadeInUp 0.6s cubic-bezier(.6,.01,.35,1.02);
       display: none;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 65vh;
-      margin-top: 6vh;
-      margin-bottom: 6vh;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
     .content-section.active {
       display: flex;
     }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(80px);}
+      from { opacity: 0; transform: translateY(48px);}
       to { opacity: 1; transform: translateY(0);}
     }
     .section-title {
-      font-size: 2.1rem;
+      font-size: 1.5rem;
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       color: #294231;
       letter-spacing: 0.01em;
       margin-top: 0;
-      margin-bottom: 1.1rem;
-      text-align: center;
+      margin-bottom: 1.35rem;
+      text-align: left;
     }
     .profile-header {
-      font-size: 1.35rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.12rem;
+      margin-bottom: 1.1rem;
       color: #294231;
       font-family: 'Playfair Display', serif;
-      text-align: center;
+      text-align: left;
       font-weight: 600;
       letter-spacing: 0.01em;
       line-height: 1.3;
     }
-    /* --- left aligned content --- */
     .profile-description,
     .motivation-text,
     .contact-section,
@@ -184,52 +176,50 @@
       text-align: left;
       align-self: stretch;
     }
-    .section-title,
-    .profile-header {
-      text-align: center;
-    }
     .profile-description,
     .motivation-text {
       color: #222;
-      margin-bottom: 2.1rem;
-      font-size: 1.09rem;
+      margin-bottom: 1.6rem;
+      font-size: 1.05rem;
       max-width: 600px;
+      line-height: 1.65;
     }
     .stats-grid {
       display: flex;
-      gap: 32px;
-      justify-content: center;
-      margin-bottom: 32px;
-      margin-top: 8px;
+      gap: 26px;
+      justify-content: flex-start;
+      margin-bottom: 28px;
+      margin-top: 2px;
     }
     .stat-item {
       text-align: center;
-      padding: 18px 30px;
+      padding: 13px 19px;
       background: linear-gradient(120deg, #e6ece2 50%, #f8f8f8 100%);
-      border-radius: 18px;
+      border-radius: 13px;
       color: #294231;
-      border: 1.5px solid #dbe5dc;
+      border: 1.5px solid #dde7db;
       font-family: 'Playfair Display', serif;
-      box-shadow: 0 2px 16px #c7d5be36;
+      box-shadow: 0 1px 7px #dbe5dc36;
+      font-size: 0.97rem;
     }
     .stat-number {
-      font-size: 1.6rem;
+      font-size: 1.22rem;
       font-weight: bold;
       margin-bottom: 3px;
     }
     .stat-label {
-      font-size: 1.03rem;
+      font-size: 0.96rem;
       opacity: 0.92;
     }
     .contact-section, .languages-section {
-      margin-top: 2.2rem;
+      margin-top: 1.6rem;
     }
     .contact-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      align-items: center;
+      gap: 20px 38px;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
     .contact-label {
       font-weight: bold;
@@ -238,49 +228,53 @@
     .contact-value, .language-level {
       color: #444;
     }
-    .language-item { margin-bottom: 6px;}
+    .language-item { margin-bottom: 4px;}
     .radar-container {
       display: flex;
       flex-direction: row;
-      gap: 2.5vw;
+      gap: 2vw;
       align-items: flex-start;
-      margin-top: 2rem;
-      background: linear-gradient(120deg,#e6ece2 50%, #f8f8f8 100%);
-      border-radius: 24px;
-      box-shadow: 0 2px 20px #c7d5be26;
-      padding: 2vw 2vw 1vw 2vw;
+      margin-top: 1.4rem;
+      background: linear-gradient(120deg,#e6ece2 60%, #f8f8f8 100%);
+      border-radius: 14px;
+      box-shadow: 0 1px 10px #c7d5be18;
+      padding: 1.2vw 1.5vw 1vw 1.5vw;
+      width: 100%;
+      margin-bottom: 1.2rem;
     }
-    #skillChart { width: 340px; height: 340px; }
+    #skillChart { width: 300px; height: 300px; }
     .skill-details {
-      max-width: 350px;
+      max-width: 330px;
       margin-left: 2vw;
       font-size: 1rem;
       color: #294231;
       font-family: 'Playfair Display', serif;
     }
-    .competency-section { background: #e6ece2; border-radius: 9px; padding: 10px 14px; margin-bottom: 13px; }
+    .competency-section { background: #e6ece2; border-radius: 7px; padding: 9px 13px; margin-bottom: 9px; }
     .competency-section h4 { margin: 0 0 4px 0; font-size: 1rem; color: #294231;}
     .competency-section p { margin: 0; font-size: 0.98rem; color: #333;}
-    .legend { display: flex; gap: 18px; margin-top: 18px;}
-    .legend-color { width: 14px; height: 14px; border-radius: 50%; }
-    .experience-item { border: 1.5px solid #dbe5dc; border-radius: 12px; margin-bottom: 16px; overflow: hidden; background: #f8f8f8; box-shadow: 0 2px 14px #c7d5be22;}
-    .experience-header { padding: 14px 18px; cursor: pointer; background: #e6ece2; font-size: 1.10rem; position: relative; color: #294231; font-family: 'Playfair Display', serif;}
+    .legend { display: flex; gap: 14px; margin-top: 8px;}
+    .legend-color { width: 13px; height: 13px; border-radius: 50%; }
+    .experience-item { border: 1.5px solid #dbe5dc; border-radius: 7px; margin-bottom: 13px; overflow: hidden; background: #f8f8f8; box-shadow: 0 1px 8px #c7d5be12;}
+    .experience-header { padding: 10px 14px; cursor: pointer; background: #e6ece2; font-size: 1.03rem; position: relative; color: #294231; font-family: 'Playfair Display', serif;}
     .experience-header:hover { background: #dbe5dc; }
-    .experience-header::after { content: "Klik for detaljer"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #7e9c85;}
-    .experience-title { font-weight: bold; font-size: 1.13rem; margin-bottom: 2px; }
-    .experience-company { font-size: 0.98rem; opacity: 0.9;}
-    .experience-details { padding: 14px 18px 17px 18px; background: #fff; border-top: 1px solid #e3e8e2; display: none; }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 11px;}
-    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 13px; padding: 5px 13px; font-size: 1rem; font-family: 'Playfair Display', serif; }
-    .motivation-text { color: #294231; background: #e6ece2; border-radius: 13px; padding: 2vw; margin-top: 1.5rem; line-height: 1.7;}
-    @media (max-width: 1100px) {
-      .side-menu-area { width: 100vw; max-width: 100vw; min-width: 0; align-items: center; padding: 1.4rem 0 0.9rem 0; border-right: none;}
+    .experience-header::after { content: "Klik for detaljer"; position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #7e9c85;}
+    .experience-title { font-weight: bold; font-size: 1.06rem; margin-bottom: 2px; }
+    .experience-company { font-size: 0.96rem; opacity: 0.9;}
+    .experience-details { padding: 12px 14px 14px 14px; background: #fff; border-top: 1px solid #e3e8e2; display: none; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 11px;}
+    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 11px; padding: 4px 10px; font-size: 0.96rem; font-family: 'Playfair Display', serif; }
+    .motivation-text { color: #294231; background: #e6ece2; border-radius: 10px; padding: 1.5vw; margin-top: 1.1rem; line-height: 1.68;}
+    @media (max-width: 900px) {
+      .side-menu-area { width: 100vw; max-width: 100vw; min-width: 0; align-items: center; padding: 1.1rem 0 0.9rem 0; border-right: none;}
+      .side-menu-title { font-size: 1.2rem; margin-bottom: 1.2rem;}
+      .side-menu-photo { width: 56px; height: 56px;}
       .main-layout { flex-direction: column; }
-      .main-content-area { height: 50vh; min-height: 220px;}
-      .main-image-bg { border-radius: 0 0 38px 38px;}
-      .stats-grid, .contact-grid { flex-direction: column; gap: 18px;}
+      .main-content-area { height: auto; min-height: 220px;}
+      .content-section { padding: 18px 8vw 14px 8vw;}
+      .stats-grid, .contact-grid { flex-direction: column; gap: 14px;}
       .radar-container { flex-direction: column; }
-      #skillChart { width: 99vw; min-width: 200px; height: 270px;}
+      #skillChart { width: 95vw; min-width: 180px; height: 220px;}
       .skill-details { margin-left: 0; margin-top: 2vw; }
     }
     .header-email {
@@ -308,7 +302,8 @@
   </div>
   <div class="main-layout">
     <aside class="side-menu-area">
-      <div class="side-menu-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
+      <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen" class="side-menu-photo">
+      <div class="side-menu-title">Anne Sofie Uhrskov Mikkelsen</div>
       <nav class="nav">
         <a href="#" data-section="profil" class="active">Profil</a>
         <a href="#" data-section="kompetencer">Kompetencer</a>
@@ -318,7 +313,6 @@
       </nav>
     </aside>
     <main class="main-content-area">
-      <img src="profile.jpg" alt="Anne Sofie Uhrskov Mikkelsen" class="main-image-bg" id="profile-img">
       <div class="content-center-wrap">
         <!-- Profil -->
         <section id="profil" class="content-section active">
@@ -343,7 +337,7 @@
             </div>
           </div>
           <div class="contact-section">
-            <div class="section-title" style="font-size:1.31rem;">Kontakt</div>
+            <div class="section-title" style="font-size:1.18rem;">Kontakt</div>
             <div class="contact-grid">
               <div>
                 <div class="contact-label">Email:</div> 
@@ -361,7 +355,7 @@
             </div>
           </div>
           <div class="languages-section">
-            <div class="section-title" style="font-size:1.15rem;">Sprog</div>
+            <div class="section-title" style="font-size:1.05rem;">Sprog</div>
             <div class="language-item">
               <span class="contact-label">Dansk:</span>
               <span class="language-level">Modersmål</span>
@@ -387,13 +381,13 @@
                 <div class="legend-color" style="background:#7e9c85"></div>
                 <span>Udviklingsområder</span>
               </div>
-              <div style="font-size: 1rem; color:#294231; margin-top: 13px;">
+              <div style="font-size: 0.97rem; color:#294231; margin-top: 8px;">
                 <b>Niveauer:</b> 1: Begynder &nbsp;2: På vej &nbsp;3: Kompetent &nbsp;4: Pro &nbsp;5: Ekspert
               </div>
             </div>
             <div class="skill-details">
               <div class="default-message">
-                <h3 style="font-size:1.1rem;margin:0 0 2px 0;">Klik på en kompetence</h3>
+                <h3 style="font-size:1.06rem;margin:0 0 2px 0;">Klik på en kompetence</h3>
                 <p style="margin:0;">Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaring.</p>
               </div>
             </div>
@@ -585,10 +579,10 @@
       window.drawRadarChart = function() {
         var svg = document.getElementById('skillChart');
         if (!svg) return;
-        svg.setAttribute('viewBox', '0 0 340 340');
+        svg.setAttribute('viewBox', '0 0 300 300');
         svg.innerHTML = '';
-        var center = { x: 170, y: 170 };
-        var maxRadius = 100;
+        var center = { x: 150, y: 150 };
+        var maxRadius = 85;
         var levels = 5;
         var angleStep = (2 * Math.PI) / skills.length;
         for (var i = 1; i <= levels; i++) {
@@ -645,17 +639,17 @@
           point.skillData = skill;
           point.onclick = function() { showSkillDetails(this.skillData); };
           svg.appendChild(point);
-          var labelRadius = maxRadius + 19;
+          var labelRadius = maxRadius + 17;
           var labelX = center.x + Math.cos(angle) * labelRadius;
           var labelY = center.y + Math.sin(angle) * labelRadius;
           var lines = skill.name.split(' & ');
           for (var li=0; li<lines.length; li++) {
             var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', labelX);
-            text.setAttribute('y', labelY + li*13 - (lines.length-1)*6);
+            text.setAttribute('y', labelY + li*12 - (lines.length-1)*6);
             text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
             text.setAttribute('dominant-baseline', 'middle');
-            text.setAttribute('font-size', '13');
+            text.setAttribute('font-size', '12');
             text.setAttribute('fill', '#294231');
             text.textContent = lines[li];
             text.style.cursor = "pointer";
@@ -670,8 +664,8 @@
         var skillDetails = document.querySelector('.skill-details');
         if (skillDetails) {
           skillDetails.innerHTML = 
-            '<h3 style="margin:0 0 7px 0;font-size:1.1rem;">' + skill.name + ' <span style="font-size:0.98rem;color:#294231;">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
-            '<p style="color:#294231;font-size:0.98rem;">' + skill.description + '</p>' +
+            '<h3 style="margin:0 0 7px 0;font-size:1.04rem;">' + skill.name + ' <span style="font-size:0.97rem;color:#294231;">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
+            '<p style="color:#294231;font-size:0.96rem;">' + skill.description + '</p>' +
             '<div class="competency-section"><h4>Mad & Kultur har brug for:</h4><p>' + skill.needsDescription + '</p></div>' +
             '<div class="competency-section"><h4>Jeg kan bidrage med:</h4><p>' + skill.contribution + '</p></div>';
         }
