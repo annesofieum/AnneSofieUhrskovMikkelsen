@@ -83,18 +83,16 @@
       background: none;
       box-shadow: none;
     }
-    .menu a.active, .menu a:hover {
-      background: var(--soft-green);
-      color: var(--accent-green);
-      opacity: 1;
-      transform: translateX(7px) scale(1.07);
-      box-shadow: 0 1px 10px #cfd7c281;
-    }
-    .menu a:active {
-      background: #def0de;
-      color: #1f3324;
-      transform: translateX(2px) scale(0.98);
-    }
+   .menu a.active, .menu a:hover {
+  background: var(--soft-green);
+  color: var(--accent-green);
+  opacity: 1;
+  transform: translateX(7px) scale(1.07);
+  /* Change box-shadow to only be around the link itself, not the full menu */
+  box-shadow: 0 2px 12px 0 #b6c7b433;
+  /* Add a more rounded edge (optional, per your image) */
+  border-radius: 22px;
+}
     .content-area {
       flex: 1;
       min-height: 100vh;
@@ -203,6 +201,7 @@
       box-shadow: 0 2px 12px #b6c7b412;
       justify-content: center;
       border: 1.5px solid var(--soft-green);
+      position: relative;
     }
     .stat-card-label {
       font-size: 1.03rem;
@@ -210,6 +209,15 @@
       margin-top: 9px;
       color: var(--accent-green);
       opacity: 0.95;
+    }
+    .stat-card:last-child {
+      font-size: 1.28rem;
+      padding-top: 1.6rem;
+      padding-bottom: 1.4rem;
+    }
+    .stat-card:last-child .stat-card-label {
+      font-size: 0.97rem;
+      margin-top: 2px;
     }
     .contact-lang-row {
       display: flex;
@@ -293,9 +301,9 @@
       min-height: 370px;
     }
     .mapping-left {
-      flex: 0 1 420px;
-      min-width: 340px;
-      max-width: 520px;
+      flex: 0 1 510px;
+      min-width: 410px;
+      max-width: 560px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -310,11 +318,19 @@
       text-align: center;
       letter-spacing: 0.03em;
     }
-    #skillChart { width: 98%; height: 370px !important; min-width: 320px; display: block; }
+    #skillChart {
+      width: 400px !important;
+      height: 400px !important;
+      min-width: 340px;
+      min-height: 340px;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      overflow: visible;
+    }
     .mapping-right {
       flex: 1 1 0;
-      min-width: 320px;
-      /* remove max-width for no clipping */
+      min-width: 340px;
       margin-left: 1vw;
       margin-right: 1vw;
       display: flex;
@@ -323,6 +339,7 @@
       align-self: stretch;
       justify-content: flex-start;
       overflow: visible !important;
+      max-width: 99vw;
     }
     .mapping-detail-card {
       background: linear-gradient(120deg, var(--soft-green) 98%, #f4f7ef 100%);
@@ -340,6 +357,8 @@
       border: 1.5px solid var(--soft-green);
       overflow: visible !important;
       max-width: none !important;
+      word-break: normal;
+      white-space: normal;
     }
     .mapping-detail-title { font-size: 1.26rem; font-weight: 700; margin-bottom: 0.7rem; }
     .mapping-detail-prolevel {
@@ -417,20 +436,6 @@
       line-height: 1.62;
       max-width: 900px;
       text-align: center;
-    }
-    .experience-case {
-      font-size: 1.12rem;
-      margin-bottom: 1rem;
-      background: #f8faf7;
-      color: #294231;
-      border-left: 5px solid var(--accent-green);
-      padding: 1rem 1.5rem;
-      border-radius: 11px;
-      box-shadow: 0 1px 8px #b6c7b110;
-      text-align: left;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .experience-list {
       display: flex;
@@ -543,7 +548,8 @@
               3<div class="stat-card-label">År erfaring</div>
             </div>
             <div class="stat-card">
-              Nyligt Afsluttet<div class="stat-card-label">Projektledelses kursus</div>
+              <span style="font-size:1.1rem;">Nyligt Afsluttet</span>
+              <div class="stat-card-label" style="font-size:0.95rem;">Projektledelses kursus</div>
             </div>
           </div>
           <hr>
@@ -620,12 +626,6 @@
           <div class="profile-description">
             Min professionelle baggrund og hvordan disse erfaringer oversættes til Marketing Projektleder kompetencer hos Mad & Kultur.
           </div>
-          <div class="experience-case">
-            CASE: Få 50+ brands og mennesker til at arbejde sammen<br>
-            <b>Situation:</b> Hos Adjutant skulle jeg koordinere et stort antal brands, som alle havde forskellige behov og deadlines.<br>
-            <b>Handling:</b> Jeg lavede et årshjul med alle aktiviteter, deadlines og ansvarlige. Jeg lavede ugentlige statusmøder, var bindeled mellem marketing, design og salg, og sikrede at alle vidste hvad de skulle.<br>
-            <b>Resultat:</b> Vi nåede vores mål – alle brands var tilfredse, og vi kunne måle effekten af vores indsatser gennem data og feedback.
-          </div>
           <div class="experience-list">
             <div class="experience-item" onclick="toggleExperience('adjutant')" id="adjutant-item">
               <div class="experience-header">
@@ -646,7 +646,8 @@
                   <li>Faciliterede samarbejde mellem design, marketing og sales teams</li>
                   <li>Ledede og trænede studentermedhjælper mens jeg beholdt overblikket over alle brand operationer</li>
                 </ul>
-              </div>
+                    <p><strong>Marketing projektleder-relevant case:</strong> Havde ansvar for 50+ brand portfolio og sikrede konsistente opdateringer og compliance på tværs af alle konti. Hjalp med at analysere markedsperformance for underpræsterende brandkategorier og præsenterede datadrevne anbefalinger til ledelsen, hvilket resulterede i strategiske pivots for produktporteføljen.</p>
+                </div>
             </div>
             <div class="experience-item" onclick="toggleExperience('sofie')" id="sofie-item">
               <div class="experience-header">
@@ -664,7 +665,8 @@
                   <li>Arbejdede med storytelling og kommunikation omkring miljøbevidste værdier</li>
                   <li>Bidrog til brandets visuelle udtryk og marketingmaterialer</li>
                 </ul>
-              </div>
+                    <p><strong>Marketing projektleder-relevant case:</strong> Udviklede content strategier og storytelling omkring bæredygtige produkter og lærte at kommunikere komplekse miljøværdier på måder der resonerede med målgruppen gennem visuelle og skriftlige medier - direkte relevant for Mad & Kulturs fokus på bæredygtighed og fællesskab.</p>
+                </div>
             </div>
             <div class="experience-item" onclick="toggleExperience('salling')" id="salling-item">
               <div class="experience-header">
@@ -679,9 +681,11 @@
                 <ul>
                   <li>Indsamlede markedsindsigter gennem dataanalyse og kundefeedback til sortimentsoptimering</li>
                   <li>Koordinerede udviklingsprojekter mellem indkøb, marketing og supply chain teams</li>
-                </ul>
-              </div>
+                 </ul>
+                    <p><strong>Marketing projektleder-relevant case:</strong> Sporede sæsonprodukt performance og tilpassede roadmap baseret på real-time salgsdata - kernekompetence for post-launch tracking og roadmap-justeringer som er essentielt for festivalmarketing koordination.</p>
+                </div>
             </div>
+        </div>
           </div>
         </div>
       </div>
@@ -814,7 +818,7 @@
     }
     window.toggleExperience = toggleExperience;
 
-    // Kompetencer radar logic — no dot growing/shrinking
+    // Kompetencer radar logic with text wrapping and no cut off
     var skills = [
       { name: "Projektledelse & Koordination", level: 4, description: "Jeg er en god blanding af struktur og kreativt kaos - elsker at være den koordinerende kraft der holder overblikket og samler folk om fællesmål.", needsDescription: "Ansvar for årshjul, planlægning og koordination af alle marketing aktiviteter", contribution: "Naturlig koordinator der trives som 'blæksprutte' for teams. Nyligt gennemført projektledelseskursus giver formelle værktøjer til min naturlige tilgang til problemløsning og koordination." },
       { name: "Tværfagligt Samarbejde", level: 5, description: "Jeg er god til at lytte til folk og samle dem om fællesmål. Rationel og fair tilgang gør koordination af teams naturligt for mig.", needsDescription: "Ugentlige møder med grafikere, fotografer, SoMe medarbejdere og koordination med eksterne samarbejdspartnere", contribution: "Hos Adjutant var jeg den, folk kom til når teams skulle koordineres og problemer løses. Min tilgang bygger på at lytte ordentligt og finde løsninger der virker for alle involverede." },
@@ -825,13 +829,32 @@
       { name: "Performance Tracking & ROI", level: 3, description: "Erfaring med performance måling og optimering gennem salgsdata analyse og kontinuerlig forbedring af processer.", needsDescription: "Systematisk tracking af marketing performance og ROI på tværs af alle kanaler", contribution: "Stærk motivation for at blive endnu dygtigere." },
       { name: "PR & Netværk Relations", level: 3, description: "Grundlæggende erfaring med stakeholder relations og kommunikation, som kan udvikles til PR og presseindsatser.", needsDescription: "PR, presseindsatser og netværks- og relationsmarkedsføring i lokalsamfund", contribution: "Stærke kommunikationsevner og erfaring med at arbejde med eksterne partnere og stakeholders på tværs af forskellige arbejdsområder." }
     ];
+    function wrapRadarText(text, maxWidth, fontSize) {
+      // SVG text wrapping for labels
+      const words = text.split(" ");
+      let line = "";
+      let lines = [];
+      for (let i = 0; i < words.length; i++) {
+        let testLine = line + (line ? " " : "") + words[i];
+        // Simple width approximation: fontSize*0.6*length
+        let testWidth = testLine.length * fontSize * 0.6;
+        if (testWidth > maxWidth && line) {
+          lines.push(line);
+          line = words[i];
+        } else {
+          line = testLine;
+        }
+      }
+      lines.push(line);
+      return lines;
+    }
     function drawRadarChart() {
       var svg = document.getElementById('skillChart');
       if (!svg) return;
-      svg.setAttribute('viewBox', '0 0 340 340');
+      svg.setAttribute('viewBox', '0 0 400 400');
       svg.innerHTML = '';
-      var center = { x: 170, y: 170 };
-      var maxRadius = 120;
+      var center = { x: 200, y: 200 };
+      var maxRadius = 140;
       var levels = 5;
       var angleStep = (2 * Math.PI) / skills.length;
       for (var i = 1; i <= levels; i++) {
@@ -890,17 +913,21 @@
         point.onmouseleave = function() { document.querySelector('.skill-details').innerHTML = document.querySelector('.default-message').outerHTML; };
         point.onclick = function() { showSkillDetails(this.skillData); };
         svg.appendChild(point);
+
+        // Label wrapping: allow 2 lines, font-size 17, maxWidth = 125
+        var fontSize = 17;
+        var maxWidth = 125;
         var labelRadius = maxRadius + 27;
         var labelX = center.x + Math.cos(angle) * labelRadius;
         var labelY = center.y + Math.sin(angle) * labelRadius;
-        var lines = skill.name.split(' & ');
+        var lines = wrapRadarText(skill.name, maxWidth, fontSize);
         for (var li=0; li<lines.length; li++) {
           var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           text.setAttribute('x', labelX);
-          text.setAttribute('y', labelY + li*14 - (lines.length-1)*7);
-          text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+          text.setAttribute('y', labelY + (li-(lines.length-1)/2)*18);
+          text.setAttribute('text-anchor', labelX > center.x ? 'start' : (labelX < center.x ? 'end' : 'middle'));
           text.setAttribute('dominant-baseline', 'middle');
-          text.setAttribute('font-size', '15');
+          text.setAttribute('font-size', fontSize);
           text.setAttribute('fill', '#294231');
           text.textContent = lines[li];
           text.style.cursor = "pointer";
