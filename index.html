@@ -569,94 +569,94 @@
       { name: "Performance Tracking & ROI", level: 3, description: "Erfaring med performance måling og optimering gennem salgsdata analyse og kontinuerlig forbedring af processer.", needsDescription: "Systematisk tracking af marketing performance og ROI på tværs af alle kanaler", contribution: "Stærk motivation for at blive endnu dygtigere." },
       { name: "PR & Netværk Relations", level: 3, description: "Grundlæggende erfaring med stakeholder relations og kommunikation, som kan udvikles til PR og presseindsatser.", needsDescription: "PR, presseindsatser og netværks- og relationsmarkedsføring i lokalsamfund", contribution: "Stærke kommunikationsevner og erfaring med at arbejde med eksterne partnere og stakeholders på tværs af forskellige arbejdsområder." }
     ];
-    function drawRadarChart() {
-      var svg = document.getElementById('skillChart');
-      if (!svg) return;
-      svg.setAttribute('viewBox', '0 0 340 340');
-      svg.innerHTML = '';
-      var center = { x: 170, y: 170 };
-      var maxRadius = 120;
-      var levels = 5;
-      var angleStep = (2 * Math.PI) / skills.length;
-      for (var i = 1; i <= levels; i++) {
-        var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('cx', center.x);
-        circle.setAttribute('cy', center.y);
-        circle.setAttribute('r', (maxRadius / levels) * i);
-        circle.setAttribute('fill', 'none');
-        circle.setAttribute('stroke', '#b7c7b0');
-        circle.setAttribute('stroke-width', '1');
-        svg.appendChild(circle);
-      }
-      for (var i = 0; i < skills.length; i++) {
-        var angle = (i * angleStep) - (Math.PI / 2);
-        var x = center.x + Math.cos(angle) * maxRadius;
-        var y = center.y + Math.sin(angle) * maxRadius;
-        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', center.x);
-        line.setAttribute('y1', center.y);
-        line.setAttribute('x2', x);
-        line.setAttribute('y2', y);
-        line.setAttribute('stroke', '#b7c7b0');
-        line.setAttribute('stroke-width', '1');
-        svg.appendChild(line);
-      }
-      var points = [];
-      for (var i = 0; i < skills.length; i++) {
-        var angle = (i * angleStep) - (Math.PI / 2);
-        var radius = (skills[i].level / levels) * maxRadius;
-        var x = center.x + Math.cos(angle) * radius;
-        var y = center.y + Math.sin(angle) * radius;
-        points.push(x + ',' + y);
-      }
-      var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-      polygon.setAttribute('points', points.join(' '));
-      polygon.setAttribute('fill', 'rgba(41,66,49,0.10)');
-      polygon.setAttribute('stroke', '#294231');
-      polygon.setAttribute('stroke-width', '2');
-      svg.appendChild(polygon);
-      for (var i = 0; i < skills.length; i++) {
-        var skill = skills[i];
-        var angle = (i * angleStep) - (Math.PI / 2);
-        var radius = (skill.level / levels) * maxRadius;
-        var x = center.x + Math.cos(angle) * radius;
-        var y = center.y + Math.sin(angle) * radius;
-        var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        point.setAttribute('cx', x);
-        point.setAttribute('cy', y);
-        point.setAttribute('r', skill.level >= 4 ? '10' : '8');
-        point.setAttribute('fill', skill.level >= 4 ? '#294231' : '#7e9c85');
-        point.setAttribute('stroke', 'white');
-        point.setAttribute('stroke-width', '2');
-        point.style.cursor = "pointer";
-        point.skillData = skill;
-        point.onmouseenter = function() { showSkillDetails(this.skillData); this.setAttribute('r', '14'); };
-        point.onmouseleave = function() { document.querySelector('.skill-details').innerHTML = document.querySelector('.default-message').outerHTML; this.setAttribute('r', skill.level >= 4 ? '10' : '8'); };
-        point.onclick = function() { showSkillDetails(this.skillData); };
-        svg.appendChild(point);
-
-        var labelRadius = maxRadius + 27;
-        var labelX = center.x + Math.cos(angle) * labelRadius;
-        var labelY = center.y + Math.sin(angle) * labelRadius;
-        var lines = skill.name.split(' & ');
-        for (var li=0; li<lines.length; li++) {
-          var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          text.setAttribute('x', labelX);
-          text.setAttribute('y', labelY + li*14 - (lines.length-1)*7);
-          text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
-          text.setAttribute('dominant-baseline', 'middle');
-          text.setAttribute('font-size', '15');
-          text.setAttribute('fill', '#294231');
-          text.textContent = lines[li];
-          text.style.cursor = "pointer";
-          text.skillData = skill;
-          text.onmouseenter = function() { showSkillDetails(this.skillData); };
-          text.onmouseleave = function() { document.querySelector('.skill-details').innerHTML = document.querySelector('.default-message').outerHTML; };
-          text.onclick = function() { showSkillDetails(this.skillData); };
-          svg.appendChild(text);
-        }
-      }
+];
+function drawRadarChart() {
+  var svg = document.getElementById('skillChart');
+  if (!svg) return;
+  svg.setAttribute('viewBox', '0 0 340 340');
+  svg.innerHTML = '';
+  var center = { x: 170, y: 170 };
+  var maxRadius = 120;
+  var levels = 5;
+  var angleStep = (2 * Math.PI) / skills.length;
+  for (var i = 1; i <= levels; i++) {
+    var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', center.x);
+    circle.setAttribute('cy', center.y);
+    circle.setAttribute('r', (maxRadius / levels) * i);
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', '#b7c7b0');
+    circle.setAttribute('stroke-width', '1');
+    svg.appendChild(circle);
+  }
+  for (var i = 0; i < skills.length; i++) {
+    var angle = (i * angleStep) - (Math.PI / 2);
+    var x = center.x + Math.cos(angle) * maxRadius;
+    var y = center.y + Math.sin(angle) * maxRadius;
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', center.x);
+    line.setAttribute('y1', center.y);
+    line.setAttribute('x2', x);
+    line.setAttribute('y2', y);
+    line.setAttribute('stroke', '#b7c7b0');
+    line.setAttribute('stroke-width', '1');
+    svg.appendChild(line);
+  }
+  var points = [];
+  for (var i = 0; i < skills.length; i++) {
+    var angle = (i * angleStep) - (Math.PI / 2);
+    var radius = (skills[i].level / levels) * maxRadius;
+    var x = center.x + Math.cos(angle) * radius;
+    var y = center.y + Math.sin(angle) * radius;
+    points.push(x + ',' + y);
+  }
+  var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+  polygon.setAttribute('points', points.join(' '));
+  polygon.setAttribute('fill', 'rgba(41,66,49,0.10)');
+  polygon.setAttribute('stroke', '#294231');
+  polygon.setAttribute('stroke-width', '2');
+  svg.appendChild(polygon);
+  for (var i = 0; i < skills.length; i++) {
+    var skill = skills[i];
+    var angle = (i * angleStep) - (Math.PI / 2);
+    var radius = (skill.level / levels) * maxRadius;
+    var x = center.x + Math.cos(angle) * radius;
+    var y = center.y + Math.sin(angle) * radius;
+    var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    point.setAttribute('cx', x);
+    point.setAttribute('cy', y);
+    point.setAttribute('r', skill.level >= 4 ? '10' : '8');
+    point.setAttribute('fill', skill.level >= 4 ? '#294231' : '#7e9c85');
+    point.setAttribute('stroke', 'white');
+    point.setAttribute('stroke-width', '2');
+    point.style.cursor = "pointer";
+    point.skillData = skill;
+    point.onmouseenter = function() { showSkillDetails(this.skillData); };
+    point.onmouseleave = function() { document.querySelector('.skill-details').innerHTML = document.querySelector('.default-message').outerHTML; };
+    point.onclick = function() { showSkillDetails(this.skillData); };
+    svg.appendChild(point);
+    var labelRadius = maxRadius + 27;
+    var labelX = center.x + Math.cos(angle) * labelRadius;
+    var labelY = center.y + Math.sin(angle) * labelRadius;
+    var lines = skill.name.split(' & ');
+    for (var li=0; li<lines.length; li++) {
+      var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', labelX);
+      text.setAttribute('y', labelY + li*14 - (lines.length-1)*7);
+      text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+      text.setAttribute('dominant-baseline', 'middle');
+      text.setAttribute('font-size', '15');
+      text.setAttribute('fill', '#294231');
+      text.textContent = lines[li];
+      text.style.cursor = "pointer";
+      text.skillData = skill;
+      text.onmouseenter = function() { showSkillDetails(this.skillData); };
+      text.onmouseleave = function() { document.querySelector('.skill-details').innerHTML = document.querySelector('.default-message').outerHTML; };
+      text.onclick = function() { showSkillDetails(this.skillData); };
+      svg.appendChild(text);
     }
+  }
+}
     function showSkillDetails(skill) {
       var levelNames = ['', 'Begynder', 'På vej', 'Kompetent', 'Pro', 'Ekspert'];
       var skillDetails = document.querySelector('.skill-details');
@@ -672,4 +672,5 @@
   </script>
 </body>
 </html>
+
 
