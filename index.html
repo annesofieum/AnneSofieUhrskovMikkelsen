@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anne Sofie Uhrskov Mikkelsen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body, html {
       height: 100%;
@@ -14,6 +14,7 @@
       background: #fff;
       min-height: 100vh;
       box-sizing: border-box;
+      font-weight: 400;
     }
     .split-layout {
       display: flex;
@@ -22,8 +23,8 @@
       width: 100vw;
     }
     .sidebar {
-      width: 420px;
-      min-width: 260px;
+      width: 380px;
+      min-width: 220px;
       background: #fff;
       display: flex;
       flex-direction: column;
@@ -33,32 +34,36 @@
       z-index: 3;
     }
     .name-title {
-      font-size: 2.3rem;
+      font-size: 1.7rem;
       font-weight: 600;
       color: #222;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.0rem;
       letter-spacing: 0.02em;
       line-height: 1.12;
       white-space: pre-line;
+      font-family: 'Playfair Display', serif;
     }
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 1.3rem;
+      gap: 1.1rem;
       margin-left: 1rem;
+      margin-top: 2.5rem;
       width: 100%;
     }
     .menu a {
-      font-size: 1.13rem;
+      font-size: 1.01rem;
       color: #444;
       text-decoration: none;
-      padding: 0.2em 0.6em;
+      padding: 0.13em 0.5em;
       border-radius: 7px;
       transition: background 0.15s, color 0.16s;
       cursor: pointer;
-      opacity: 0.75;
+      opacity: 0.7;
       letter-spacing: 0.01em;
       width: fit-content;
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
     }
     .menu a.active, .menu a:hover {
       background: #eaeede;
@@ -90,8 +95,8 @@
     .section-content {
       display: none;
       width: 100%;
-      max-width: 700px;
-      padding: 3vw 2vw;
+      max-width: 1050px;
+      padding: 4vw 4vw;
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       margin: auto;
@@ -100,10 +105,11 @@
       border-radius: 22px;
       height: fit-content;
       min-height: 300px;
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
       z-index: 2;
       animation: fadeInUp 0.7s cubic-bezier(.6,.01,.35,1.02);
+      font-weight: 400;
     }
     .section-content.active {
       display: block;
@@ -115,12 +121,18 @@
       margin-top: 0;
       margin-bottom: 1.1rem;
       text-align: left;
+      font-family: 'Playfair Display', serif;
+    }
+    .profile-description, .motivation-text, .contact-section, .languages-section, .stats-grid, ul, li, .experience-details {
+      text-align: left;
+      align-self: stretch;
+      font-weight: 400;
     }
     .profile-description {
       color: #232323;
       margin-bottom: 1.25rem;
       font-size: 1.13rem;
-      max-width: 700px;
+      max-width: 900px;
       line-height: 1.62;
     }
     .stats-grid {
@@ -139,29 +151,37 @@
       border: 1.5px solid #dde7db;
       font-family: var(--font-title);
       font-size: 1.09rem;
+      font-weight: 400;
     }
     .stat-number {
       font-size: 1.19rem;
-      font-weight: bold;
+      font-weight: 600;
       margin-bottom: 1px;
+      letter-spacing: 0.01em;
     }
     .stat-label {
       font-size: 0.98rem;
       opacity: 0.92;
+      font-weight: 400;
     }
     .contact-section, .languages-section {
       margin-top: 1.1rem;
+      font-weight: 400;
     }
     .contact-label {
-      font-weight: bold;
+      font-weight: 600;
       color: #294231;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.01em;
     }
     .contact-value, .language-level {
       color: #444;
+      font-weight: 400;
     }
     .languages-section .section-title {
       font-size: 1.13rem;
       margin-bottom: 0.5rem;
+      font-weight: 700;
     }
     .language-item { margin-bottom: 3px;}
     .radar-container {
@@ -177,6 +197,7 @@
       width: 100%;
       margin-bottom: 1.2rem;
       min-height: 370px;
+      font-weight: 400;
     }
     #skillChart { width: 340px !important; height: 340px !important; display: block; }
     .skill-details {
@@ -186,28 +207,29 @@
       font-size: 1.09rem;
       color: #294231;
       font-family: var(--font-title);
+      font-weight: 400;
     }
-    .competency-section { background: #e6ece2; border-radius: 7px; padding: 9px 13px; margin-bottom: 9px; }
-    .competency-section h4 { margin: 0 0 3px 0; font-size: 1rem; color: #294231;}
-    .competency-section p { margin: 0; font-size: 1.01rem; color: #333;}
+    .competency-section { background: #e6ece2; border-radius: 7px; padding: 9px 13px; margin-bottom: 9px; font-weight: 400;}
+    .competency-section h4 { margin: 0 0 3px 0; font-size: 1rem; color: #294231; font-weight: 700;}
+    .competency-section p { margin: 0; font-size: 1.01rem; color: #333; font-weight: 400;}
     .legend { display: flex; gap: 8px; margin-top: 8px;}
     .legend-color { width: 13px; height: 13px; border-radius: 50%; }
     .experience-item { border: 1.5px solid #dbe5dc; border-radius: 7px; margin-bottom: 13px; overflow: hidden; background: #f8f8f8; box-shadow: 0 1px 8px #c7d5be12;}
-    .experience-header { padding: 10px 14px; cursor: pointer; background: #e6ece2; font-size: 1.03rem; position: relative; color: #294231;}
+    .experience-header { padding: 10px 14px; cursor: pointer; background: #e6ece2; font-size: 1.03rem; position: relative; color: #294231; font-weight: 500;}
     .experience-header:hover { background: #dbe5dc; }
     .experience-header::after { content: "Klik for detaljer"; position: absolute; right: 13px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #7e9c85;}
-    .experience-title { font-weight: bold; font-size: 1.01rem; margin-bottom: 1px; }
-    .experience-company { font-size: 0.93rem; opacity: 0.9;}
-    .experience-details { padding: 9px 11px 11px 11px; background: #fff; border-top: 1px solid #e3e8e2; display: none; }
+    .experience-title { font-weight: 600; font-size: 1.01rem; margin-bottom: 1px; }
+    .experience-company { font-size: 0.93rem; opacity: 0.9; font-weight: 400;}
+    .experience-details { padding: 9px 11px 11px 11px; background: #fff; border-top: 1px solid #e3e8e2; display: none; font-weight: 400;}
     .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px;}
-    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.95rem; font-family: var(--font-title); }
-    .motivation-text { color: #294231; background: #e6ece2; border-radius: 7px; padding: 1vw; margin-top: 0.8rem; line-height: 1.65;}
-    @media (max-width: 900px) {
-      .split-layout { flex-direction: column; }
+    .skill-tag { background: #b1ccb2; color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.95rem; font-family: var(--font-title); font-weight: 400;}
+    .motivation-text { color: #294231; background: #e6ece2; border-radius: 7px; padding: 1vw; margin-top: 0.8rem; line-height: 1.65; font-weight: 400;}
+    @media (max-width: 1100px) {
+      .section-content { max-width: 98vw; padding: 2vw 2vw;}
       .sidebar { width: 100vw; min-width: 0; padding: 24px 0 0 12px; }
+      .split-layout { flex-direction: column; }
       .content-area { min-height: 45vh; }
       .front-image { max-width: 98vw; max-height: 40vh; }
-      .section-content { position: static; max-width: 98vw; }
       .radar-container { flex-direction: column; min-height: 250px;}
       #skillChart { width: 95vw !important; min-width: 180px; height: 220px !important;}
       .skill-details { margin-left: 0; margin-top: 2vw; min-width: unset; max-width: 100%;}
@@ -225,12 +247,11 @@
         <a href="#" data-section="erfaring">Erfaring</a>
         <a href="#" data-section="uddannelse">Uddannelse</a>
         <a href="#" data-section="motivation">Motivation</a>
-        <!-- Add more sections here if needed -->
       </nav>
     </div>
     <div class="content-area">
       <!-- The artwork, shown on "Forside" -->
-      <img src="artwork.jpg" alt="Artwork" class="front-image" id="frontimg" />
+      <img src="profile.jpg" alt="Artwork" class="front-image" id="frontimg" />
       <!-- Section: Om mig -->
       <div class="section-content" id="ommig-section">
         <div class="section-title">Struktureret koordinator med kreativt drive</div>
@@ -578,8 +599,8 @@
       var skillDetails = document.querySelector('.skill-details');
       if (skillDetails) {
         skillDetails.innerHTML =
-          '<h3 style="margin:0 0 6px 0;font-size:1.09rem;">' + skill.name + ' <span style="font-size:0.97rem;color:#294231;">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
-          '<p style="color:#294231;font-size:1.04rem;">' + skill.description + '</p>' +
+          '<h3 style="margin:0 0 6px 0;font-size:1.09rem; font-weight:700;">' + skill.name + ' <span style="font-size:0.97rem;color:#294231; font-weight:400;">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
+          '<p style="color:#294231;font-size:1.04rem; font-weight:400;">' + skill.description + '</p>' +
           '<div class="competency-section"><h4>Mad & Kultur har brug for:</h4><p>' + skill.needsDescription + '</p></div>' +
           '<div class="competency-section"><h4>Jeg kan bidrage med:</h4><p>' + skill.contribution + '</p></div>';
       }
