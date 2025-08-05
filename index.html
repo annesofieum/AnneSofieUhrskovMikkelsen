@@ -26,11 +26,113 @@
       box-sizing: border-box;
       overflow-x: hidden;
     }
-    .main-layout {
+    body {
+      position: relative;
+    }
+    /* -- FRONT PAGE -- */
+    #frontpage {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 30;
+      background: var(--color-bg);
       display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.7s;
+      overflow: hidden;
+    }
+    #front-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.68) blur(1px);
+      min-width: 100vw; min-height: 100vh;
+    }
+    #front-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.97) 98%);
+      z-index: 1;
+    }
+    .front-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.87);
+      border-radius: 36px;
+      box-shadow: 0 24px 80px #c0dab7af;
+      padding: 56px 36px 48px 36px;
+      margin-bottom: 4vh;
+    }
+    .front-name {
+      font-family: var(--font-title);
+      font-size: 3.3rem;
+      font-weight: 700;
+      color: var(--color-main);
+      letter-spacing: 0.02em;
+      line-height: 1.07;
+      text-align: center;
+      margin-bottom: 0.6rem;
+      margin-top: 0;
+      text-shadow: 0 4px 18px #fff, 0 1px 0 #cfd7c2;
+    }
+    .front-job {
+      font-family: var(--font-title);
+      font-size: 1.47rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.7rem;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .front-lead {
+      font-family: var(--font-body);
+      font-size: 1.19rem;
+      color: #232323;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+      max-width: 500px;
+      line-height: 1.60;
+      text-align: center;
+      text-shadow: 0 3px 12px #fff;
+    }
+    .front-btn {
+      font-family: var(--font-title);
+      font-size: 1.17rem;
+      font-weight: 700;
+      background: linear-gradient(90deg,var(--color-accent) 70%,#cfd7c2 100%);
+      color: #fff;
+      border: none;
+      padding: 18px 46px;
+      border-radius: 36px;
+      cursor: pointer;
+      margin-top: 1.4rem;
+      letter-spacing: 0.05em;
+      transition: filter .18s, background .22s;
+      box-shadow: 0 8px 28px #b1ccb285;
+    }
+    .front-btn:hover {
+      filter: brightness(1.08);
+      background: linear-gradient(90deg,#9bbfa1 90%,#cfd7c2 100%);
+    }
+    /* -- MAIN CV AREA -- */
+    .main-layout {
+      display: none;
       min-height: 100vh;
       width: 100vw;
       background: var(--color-bg);
+    }
+    .main-layout.active {
+      display: flex;
     }
     .side-menu-area {
       width: 280px;
@@ -106,120 +208,7 @@
       justify-content: flex-start;
       min-height: 100vh;
     }
-    /* Forside Hero Content */
-    #front.content-section {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      width: 100%;
-      background: none;
-      box-shadow: none;
-      border-radius: 0;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-    }
-    .hero-bg-img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      min-width: 100vw;
-      min-height: 100vh;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.70) blur(0px);
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: linear-gradient(180deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.97) 95%);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--content-max-width);
-      margin: 0 auto;
-      margin-top: 10vh;
-      margin-bottom: 8vh;
-      padding: 56px 40px 48px 40px;
-      background: none;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      border-radius: 30px;
-      box-shadow: 0 24px 80px #c0dab7af;
-      background: rgba(255,255,255,0.85);
-    }
-    .hero-name {
-      font-family: var(--font-title);
-      font-size: 3.15rem;
-      font-weight: 700;
-      color: var(--color-main);
-      margin-bottom: 0.5rem;
-      margin-top: 0;
-      letter-spacing: 0.02em;
-      line-height: 1.07;
-      text-shadow: 0 4px 18px #fff, 0 1px 0 #cfd7c2;
-    }
-    .hero-job {
-      font-family: var(--font-title);
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 1.7rem;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-    }
-    .hero-lead {
-      font-family: var(--font-body);
-      font-size: 1.18rem;
-      color: #232323;
-      margin-bottom: 1.3rem;
-      font-weight: 400;
-      max-width: 540px;
-      line-height: 1.60;
-      text-shadow: 0 3px 12px #fff;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 36px;
-      font-size: 1.13rem;
-      margin-bottom: 0;
-      margin-top: 1.2rem;
-    }
-    .hero-stat {
-      color: var(--color-main);
-      font-family: var(--font-title);
-      font-size: 1.22rem;
-      font-weight: 700;
-      text-align: left;
-    }
-    .hero-stat-meta {
-      display: block;
-      color: var(--color-meta);
-      font-family: var(--font-body);
-      font-size: 0.99rem;
-      font-weight: 400;
-    }
-    .hero-contact {
-      margin-top: 1.4rem;
-      font-size: 1.08rem;
-      color: #444;
-      font-family: var(--font-body);
-    }
-    .hero-contact a { color: var(--color-main); text-decoration: underline; }
-    .hero-lang {
-      margin-top: 1rem;
-      font-size: 1.05rem;
-      color: #444;
-    }
-    /* Content pages */
-    .content-section:not(#front) {
+    .content-section {
       width: 100%;
       max-width: var(--content-max-width);
       margin: 0 auto 40px auto;
@@ -353,18 +342,42 @@
     .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px;}
     .skill-tag { background: #b1ccb2; color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.95rem; font-family: var(--font-title); }
     .motivation-text { color: var(--color-main); background: #e6ece2; border-radius: 7px; padding: 1vw; margin-top: 0.8rem; line-height: 1.65;}
+    .tilbage-btn {
+      position: fixed;
+      right: 3vw;
+      bottom: 3vw;
+      z-index: 999;
+      font-family: var(--font-title);
+      font-size: 1.09rem;
+      font-weight: 700;
+      background: linear-gradient(90deg,#b1ccb2 70%,#cfd7c2 100%);
+      color: #fff;
+      border: none;
+      padding: 13px 38px;
+      border-radius: 32px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 18px #b1ccb285;
+      opacity: 0.91;
+      transition: background 0.2s, filter 0.2s;
+    }
+    .tilbage-btn:hover {
+      filter: brightness(1.09);
+      background: linear-gradient(90deg,#9bbfa1 90%,#cfd7c2 100%);
+    }
     @media (max-width: 900px) {
       .side-menu-area { width: 100vw; max-width: 100vw; min-width: 0; align-items: center; border-right: none;}
       .side-menu-inner { padding: 24px 0 18px 0; }
       .side-menu-title { font-size: 1.2rem; margin-bottom: 1.2rem;}
       .main-layout { flex-direction: column; }
       .main-content-area { height: auto; min-height: 220px;}
-      .content-section:not(#front), .hero-content { padding: 18px 5vw 14px 5vw;}
+      .content-section { padding: 18px 5vw 14px 5vw;}
       .stats-grid, .contact-grid { flex-direction: column; gap: 10px;}
       .radar-container { flex-direction: column; min-height: 250px;}
       #skillChart { width: 95vw !important; min-width: 180px; height: 220px !important;}
       .skill-details { margin-left: 0; margin-top: 2vw; min-width: unset; max-width: 100%;}
-      .hero-content { margin-top: 2vh; }
+      .tilbage-btn { right: 6vw; bottom: 2vw; padding: 11px 22px; font-size: 1rem;}
+      .front-content { padding: 36px 10vw 30px 10vw; }
     }
     .header-email {
       position: absolute;
@@ -389,12 +402,30 @@
   <div class="header-email">
     <a href="mailto:annesofieum@outlook.dk">annesofieum@outlook.dk</a>
   </div>
+  
+  <!-- FRONT PAGE -->
+  <div id="frontpage">
+    <img src="profile.jpg" alt="" id="front-bg" />
+    <div id="front-overlay"></div>
+    <div class="front-content">
+      <div class="front-name">Anne Sofie Uhrskov Mikkelsen</div>
+      <div class="front-job">Marketing Projektleder</div>
+      <div class="front-lead">
+        Erfaren koordinator med en balanceret blanding af struktur og kreativitet.<br>
+        Specialist i at holde overblikket, samle folk om fælles mål og løse problemer når de opstår.<br>
+        Passioneret omkring marketing, der vækker følelser og nysgerrighed.
+      </div>
+      <button class="front-btn" id="openCVBtn">Gå til profil</button>
+    </div>
+  </div>
+  
+  <!-- MAIN CV AREA -->
   <div class="main-layout">
     <aside class="side-menu-area">
       <div class="side-menu-inner">
         <div class="side-menu-title">Anne Sofie<br>Uhrskov Mikkelsen</div>
         <nav class="nav">
-          <a href="#" data-section="front" class="active">Forside</a>
+          <a href="#" data-section="ommig" class="active">Om Mig</a>
           <a href="#" data-section="kompetencer">Kompetencer</a>
           <a href="#" data-section="erfaring">Erfaring</a>
           <a href="#" data-section="uddannelse">Uddannelse</a>
@@ -403,37 +434,55 @@
       </div>
     </aside>
     <main class="main-content-area">
-      <!-- Forside/hero -->
-      <section id="front" class="content-section active">
-        <img src="profile.jpg" alt="" class="hero-bg-img" />
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <div class="hero-name">Anne Sofie Uhrskov Mikkelsen</div>
-          <div class="hero-job">Marketing Projektleder</div>
-          <div class="hero-lead">
-            Erfaren koordinator med en balanceret blanding af struktur og kreativitet.<br>
-            Specialist i at holde overblikket, samle folk om fælles mål og løse problemer når de opstår.<br>
-            Passioneret omkring marketing, der vækker følelser og nysgerrighed.
+      <!-- Om Mig -->
+      <section id="ommig" class="content-section active">
+        <div class="section-title">Struktureret koordinator med kreativt drive</div>
+        <div class="profile-description">
+          Erfaren koordinator med en god blanding af struktur og kreativt kaos.<br>
+          Specialist i at holde overblikket, samle folk om fællesmål og løse problemer når de opstår.<br>
+          Passioneret omkring marketing der vækker følelser og nysgerrighed.
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Brands koordineret</div>
           </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              50+<span class="hero-stat-meta">Brands koordineret</span>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">År erfaring</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Nyligt Afsluttet</div>
+            <div class="stat-label">Projektledelses kursus</div>
+          </div>
+        </div>
+        <div class="contact-section">
+          <div class="section-title" style="font-size:1.27rem;">Kontakt</div>
+          <div class="contact-grid">
+            <div>
+              <div class="contact-label">Email:</div> 
+              <span class="contact-value">annesofieum@outlook.dk</span><br>
+              <div class="contact-label">Telefon:</div> 
+              <span class="contact-value">+45 20517479</span><br>
+              <div class="contact-label">LinkedIn:</div> 
+              <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197" 
+                target="_blank" class="contact-value">Anne Sofie Uhrskov Mikkelsen</a>
             </div>
-            <div class="hero-stat">
-              3<span class="hero-stat-meta">År erfaring</span>
-            </div>
-            <div class="hero-stat">
-              Nyligt afsluttet<span class="hero-stat-meta">Projektledelses kursus</span>
+            <div>
+              <div class="contact-label">Adresse:</div> 
+              <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro, Danmark</span>
             </div>
           </div>
-          <div class="hero-contact">
-            <span class="contact-label">Email:</span> annesofieum@outlook.dk &nbsp;|&nbsp; 
-            <span class="contact-label">Telefon:</span> +45 20517479 &nbsp;|&nbsp;
-            <span class="contact-label">LinkedIn:</span>
-            <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197" target="_blank">LinkedIn</a>
+        </div>
+        <div class="languages-section">
+          <div class="section-title" style="font-size:1.13rem;">Sprog</div>
+          <div class="language-item">
+            <span class="contact-label">Dansk:</span>
+            <span class="language-level">Modersmål</span>
           </div>
-          <div class="hero-lang">
-            <span class="contact-label">Sprog:</span> Dansk (modersmål), Engelsk (flydende)
+          <div class="language-item">
+            <span class="contact-label">Engelsk:</span>
+            <span class="language-level">Flydende</span>
           </div>
         </div>
       </section>
@@ -488,11 +537,25 @@
         </div>
         <!-- ... Motivation content unchanged ... -->
       </section>
+      <button class="tilbage-btn" id="backToFront">Tilbage</button>
     </main>
   </div>
   <script>
-    // Navigation logic
+    // Show main layout
+    document.getElementById('openCVBtn').onclick = function() {
+      document.getElementById('frontpage').style.display = 'none';
+      document.querySelector('.main-layout').classList.add('active');
+      document.body.style.overflow = '';
+    };
+    // Back to front page
+    document.getElementById('backToFront').onclick = function() {
+      document.getElementById('frontpage').style.display = 'flex';
+      document.querySelector('.main-layout').classList.remove('active');
+      document.body.style.overflow = 'hidden';
+    };
+    // Tab navigation
     window.onload = function() {
+      document.body.style.overflow = 'hidden';
       document.querySelectorAll('.nav a').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
