@@ -65,34 +65,41 @@
       gap: 1.2rem;
       margin-left: 1rem;
       margin-top: 6.5rem;
-      width: 100%;
+      padding: 0;
+      width: auto;
       background: none;
       box-shadow: none;
     }
     .menu a {
+      display: inline-block;
       font-size: 1.11rem;
       color: var(--title-green);
       text-decoration: none;
       padding: 0.19em 0.95em;
-      border-radius: var(--border-radius);
-      transition: background 0.16s, color 0.14s, transform 0.18s;
+      border-radius: 22px;
+      transition: background 0.16s, color 0.14s, transform 0.18s, box-shadow 0.15s;
       cursor: pointer;
       opacity: 0.7;
       letter-spacing: 0.01em;
       font-weight: 500;
       background: none;
       box-shadow: none;
+      margin: 0;
+      min-width: 0;
     }
-   .menu a.active, .menu a:hover {
-  background: var(--soft-green);
-  color: var(--accent-green);
-  opacity: 1;
-  transform: translateX(7px) scale(1.07);
-  /* Change box-shadow to only be around the link itself, not the full menu */
-  box-shadow: 0 2px 12px 0 #b6c7b433;
-  /* Add a more rounded edge (optional, per your image) */
-  border-radius: 22px;
-}
+    .menu a.active, .menu a:hover {
+      background: var(--soft-green);
+      color: var(--accent-green);
+      opacity: 1;
+      transform: translateX(7px) scale(1.07);
+      box-shadow: 0 2px 12px 0 #b6c7b433;
+      border-radius: 22px;
+    }
+    .menu a:active {
+      background: #def0de;
+      color: #1f3324;
+      transform: translateX(2px) scale(0.98);
+    }
     .content-area {
       flex: 1;
       min-height: 100vh;
@@ -115,7 +122,6 @@
       box-shadow: 0 6px 56px #d3e1be3f;
       background: #fff;
     }
-    /* Section Content */
     .section-content {
       display: none;
       width: 100%;
@@ -209,15 +215,14 @@
       margin-top: 9px;
       color: var(--accent-green);
       opacity: 0.95;
+      font-family: var(--font-main);
     }
-    .stat-card:last-child {
-      font-size: 1.28rem;
-      padding-top: 1.6rem;
-      padding-bottom: 1.4rem;
-    }
-    .stat-card:last-child .stat-card-label {
-      font-size: 0.97rem;
-      margin-top: 2px;
+    .stat-card .stat-card-bold {
+      font-weight: 700;
+      font-size: 1.12rem;
+      color: var(--title-green);
+      font-family: var(--font-title);
+      margin-bottom: 2px;
     }
     .contact-lang-row {
       display: flex;
@@ -328,6 +333,45 @@
       display: block;
       overflow: visible;
     }
+    .radar-legend-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.7em;
+    }
+    .mapping-legendbox {
+      background: #fff;
+      border-radius: 14px;
+      margin: 0.7vw 0 0 0;
+      padding: 1.1vw 1.5vw 1.2vw 1.5vw;
+      width: 92%;
+      max-width: 430px;
+      box-shadow: 0 2px 10px #b6c7b410;
+      color: var(--title-green);
+      font-size: 1.13rem;
+      border: 1.5px solid var(--soft-green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .legend { display: flex; gap: 14px; align-items: center; margin-bottom: 0.7rem;}
+    .legend-color { width: 15px; height: 15px; border-radius: 50%; }
+    .mapping-niveau {
+      font-size: 1.13rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0.5rem;
+      color: var(--title-green);
+      text-align: center;
+      width: 100%;
+    }
+    .mapping-niveau b, .mapping-niveau .niv {
+      color: var(--title-green);
+      font-weight: 700;
+      margin-right: 0.4em;
+    }
     .mapping-right {
       flex: 1 1 0;
       min-width: 340px;
@@ -395,32 +439,6 @@
       color: #294231;
       font-weight: 400;
     }
-    .mapping-legendbox {
-      background: #fff;
-      border-radius: 14px;
-      margin: 0.9vw auto 0 auto;
-      padding: 1.5vw 1.5vw 1.8vw 1.5vw;
-      width: 98%;
-      max-width: 800px;
-      box-shadow: 0 2px 10px #b6c7b410;
-      color: var(--title-green);
-      font-size: 1.13rem;
-      border: 1.5px solid var(--soft-green);
-    }
-    .legend { display: flex; gap: 14px; align-items: center; margin-bottom: 0.7rem;}
-    .legend-color { width: 15px; height: 15px; border-radius: 50%; }
-    .mapping-niveau {
-      font-size: 1.17rem;
-      margin-top: 0.7rem;
-      margin-bottom: 0.5rem;
-      color: var(--title-green);
-    }
-    .mapping-niveau b, .mapping-niveau .niv {
-      color: var(--title-green);
-      font-weight: 700;
-      margin-right: 0.4em;
-    }
-    /* Erfaring/Uddannelse/Motivation */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
@@ -436,6 +454,13 @@
       line-height: 1.62;
       max-width: 900px;
       text-align: center;
+    }
+    .centered-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .experience-list {
       display: flex;
@@ -502,7 +527,7 @@
     }
     .skills-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 9px;}
     .skill-tag { background: var(--accent-green); color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.98rem;}
-    .motivation-text { padding: 2.1rem 2rem 2.1rem 1.6rem; font-size: 1.13rem;}
+    .motivation-text { padding: 2.1rem 2rem 2.1rem 1.6rem; font-size: 1.13rem; text-align: center; }
     @media (max-width: 1100px) {
       .section-content,.big-section-box,.om-mig-box,.mapping-box { max-width: 99vw; padding: 2vw 2vw;}
       .sidebar { width: 100vw; min-width: 0; padding: 24px 0 0 12px; box-shadow: 0 2px 8px #dbeada1a;}
@@ -542,14 +567,16 @@
           </div>
           <div class="stats-row">
             <div class="stat-card">
-              50+<div class="stat-card-label">Brands koordineret</div>
+              <span class="stat-card-bold">50+</span>
+              <div class="stat-card-label">Brands koordineret</div>
             </div>
             <div class="stat-card">
-              3<div class="stat-card-label">År erfaring</div>
+              <span class="stat-card-bold">3</span>
+              <div class="stat-card-label">År erfaring</div>
             </div>
             <div class="stat-card">
-              <span style="font-size:1.1rem;">Nyligt Afsluttet</span>
-              <div class="stat-card-label" style="font-size:0.95rem;">Projektledelses kursus</div>
+              <span class="stat-card-bold">Nyligt Afsluttet</span>
+              <div class="stat-card-label">Projektledelses kursus</div>
             </div>
           </div>
           <hr>
@@ -593,28 +620,30 @@
             <div class="mapping-left">
               <div class="radar-title">Marketing Kompetence Radar</div>
               <svg id="skillChart"></svg>
+              <div class="radar-legend-wrap">
+                <div class="mapping-legendbox">
+                  <div class="legend">
+                    <div class="legend-color" style="background:var(--legend-dark)"></div>
+                    <span>Stærkt niveau (Pro/Ekspert niveau)</span>
+                    <div class="legend-color" style="background:var(--legend-light)"></div>
+                    <span>Udviklingsområder</span>
+                  </div>
+                  <div class="mapping-niveau">
+                    <b>Kompetence Niveauer:</b>
+                    <span class="niv"><b>Niveau 1:</b></span> Begynder
+                    <span class="niv"><b>Niveau 2:</b></span> På vej
+                    <span class="niv"><b>Niveau 3:</b></span> Kompetent
+                    <span class="niv"><b>Niveau 4:</b></span> Pro
+                    <span class="niv"><b>Niveau 5:</b></span> Ekspert
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="mapping-right skill-details">
               <div class="mapping-detail-card default-message">
                 <div class="mapping-detail-title" style="font-size:1.13rem;">Klik på en kompetence</div>
                 <div class="mapping-detail-desc">Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaring.</div>
               </div>
-            </div>
-          </div>
-          <div class="mapping-legendbox">
-            <div class="legend">
-              <div class="legend-color" style="background:var(--legend-dark)"></div>
-              <span>Stærkt niveau (Pro/Ekspert niveau)</span>
-              <div class="legend-color" style="background:var(--legend-light)"></div>
-              <span>Udviklingsområder</span>
-            </div>
-            <div class="mapping-niveau">
-              <b>Kompetence Niveauer:</b> 
-              <span class="niv"><b>Niveau 1:</b></span> Begynder
-              <span class="niv"><b>Niveau 2:</b></span> På vej
-              <span class="niv"><b>Niveau 3:</b></span> Kompetent
-              <span class="niv"><b>Niveau 4:</b></span> Pro
-              <span class="niv"><b>Niveau 5:</b></span> Ekspert
             </div>
           </div>
         </div>
@@ -626,66 +655,64 @@
           <div class="profile-description">
             Min professionelle baggrund og hvordan disse erfaringer oversættes til Marketing Projektleder kompetencer hos Mad & Kultur.
           </div>
-          <div class="experience-list">
-            <div class="experience-item" onclick="toggleExperience('adjutant')" id="adjutant-item">
-              <div class="experience-header">
-                <div class="experience-title">Marketplace Manager</div>
-                <div class="experience-company">Adjutant (Marts 2022 – November 2024) • Høj relevans</div>
+          <div class="centered-content">
+            <div class="experience-list">
+              <div class="experience-item" onclick="toggleExperience('adjutant')" id="adjutant-item">
+                <div class="experience-header">
+                  <div class="experience-title">Marketplace Manager</div>
+                  <div class="experience-company">Adjutant (Marts 2022 – November 2024) • Høj relevans</div>
+                </div>
+                <div id="adjutant-details" class="experience-details">
+                  <div class="skills-grid">
+                    <div class="skill-tag">Projektkoordination</div>
+                    <div class="skill-tag">Team Ledelse</div>
+                    <div class="skill-tag">Performance Tracking</div>
+                    <div class="skill-tag">Tværfagligt Samarbejde</div>
+                    <div class="skill-tag">Visuel kommunikation</div>
+                  </div>
+                  <ul>
+                    <li>Koordinerede back-office for 50+ brands med fokus på markedstiming og positionering</li>
+                    <li>Byggede business cases baseret på salgsdata og markedstendenser til strategiske beslutninger</li>
+                    <li>Faciliterede samarbejde mellem design, marketing og sales teams</li>
+                    <li>Ledede og trænede studentermedhjælper mens jeg beholdt overblikket over alle brand operationer</li>
+                  </ul>
+                </div>
               </div>
-              <div id="adjutant-details" class="experience-details">
-                <div class="skills-grid">
-                  <div class="skill-tag">Projektkoordination</div>
-                  <div class="skill-tag">Team Ledelse</div>
-                  <div class="skill-tag">Performance Tracking</div>
-                  <div class="skill-tag">Tværfagligt Samarbejde</div>
-                  <div class="skill-tag">Visuel kommunikation</div>
+              <div class="experience-item" onclick="toggleExperience('sofie')" id="sofie-item">
+                <div class="experience-header">
+                  <div class="experience-title">Kreativ Medarbejder</div>
+                  <div class="experience-company">Sofie Ladefoged (Januar 2022 – Marts 2022) • Medium relevans</div>
                 </div>
-                <ul>
-                  <li>Koordinerede back-office for 50+ brands med fokus på markedstiming og positionering</li>
-                  <li>Byggede business cases baseret på salgsdata og markedstendenser til strategiske beslutninger</li>
-                  <li>Faciliterede samarbejde mellem design, marketing og sales teams</li>
-                  <li>Ledede og trænede studentermedhjælper mens jeg beholdt overblikket over alle brand operationer</li>
-                </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Havde ansvar for 50+ brand portfolio og sikrede konsistente opdateringer og compliance på tværs af alle konti. Hjalp med at analysere markedsperformance for underpræsterende brandkategorier og præsenterede datadrevne anbefalinger til ledelsen, hvilket resulterede i strategiske pivots for produktporteføljen.</p>
+                <div id="sofie-details" class="experience-details">
+                  <div class="skills-grid">
+                    <div class="skill-tag">Content Creation</div>
+                    <div class="skill-tag">Brand Communication</div>
+                    <div class="skill-tag">Storytelling</div>
+                  </div>
+                  <ul>
+                    <li>Udviklede indhold og nyhedsbreve med fokus på bæredygtige produkter</li>
+                    <li>Arbejdede med storytelling og kommunikation omkring miljøbevidste værdier</li>
+                    <li>Bidrog til brandets visuelle udtryk og marketingmaterialer</li>
+                  </ul>
                 </div>
-            </div>
-            <div class="experience-item" onclick="toggleExperience('sofie')" id="sofie-item">
-              <div class="experience-header">
-                <div class="experience-title">Kreativ Medarbejder</div>
-                <div class="experience-company">Sofie Ladefoged (Januar 2022 – Marts 2022) • Medium relevans</div>
               </div>
-              <div id="sofie-details" class="experience-details">
-                <div class="skills-grid">
-                  <div class="skill-tag">Content Creation</div>
-                  <div class="skill-tag">Brand Communication</div>
-                  <div class="skill-tag">Storytelling</div>
+              <div class="experience-item" onclick="toggleExperience('salling')" id="salling-item">
+                <div class="experience-header">
+                  <div class="experience-title">Indkøbspraktikant</div>
+                  <div class="experience-company">Salling Group (August 2020 – December 2020) • Medium relevans</div>
                 </div>
-                <ul>
-                  <li>Udviklede indhold og nyhedsbreve med fokus på bæredygtige produkter</li>
-                  <li>Arbejdede med storytelling og kommunikation omkring miljøbevidste værdier</li>
-                  <li>Bidrog til brandets visuelle udtryk og marketingmaterialer</li>
-                </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Udviklede content strategier og storytelling omkring bæredygtige produkter og lærte at kommunikere komplekse miljøværdier på måder der resonerede med målgruppen gennem visuelle og skriftlige medier - direkte relevant for Mad & Kulturs fokus på bæredygtighed og fællesskab.</p>
+                <div id="salling-details" class="experience-details">
+                  <div class="skills-grid">
+                    <div class="skill-tag">Markedsresearch</div>
+                    <div class="skill-tag">Data Analyse</div>
+                  </div>
+                  <ul>
+                    <li>Indsamlede markedsindsigter gennem dataanalyse og kundefeedback til sortimentsoptimering</li>
+                    <li>Koordinerede udviklingsprojekter mellem indkøb, marketing og supply chain teams</li>
+                  </ul>
                 </div>
-            </div>
-            <div class="experience-item" onclick="toggleExperience('salling')" id="salling-item">
-              <div class="experience-header">
-                <div class="experience-title">Indkøbspraktikant</div>
-                <div class="experience-company">Salling Group (August 2020 – December 2020) • Medium relevans</div>
               </div>
-              <div id="salling-details" class="experience-details">
-                <div class="skills-grid">
-                  <div class="skill-tag">Markedsresearch</div>
-                  <div class="skill-tag">Data Analyse</div>
-                </div>
-                <ul>
-                  <li>Indsamlede markedsindsigter gennem dataanalyse og kundefeedback til sortimentsoptimering</li>
-                  <li>Koordinerede udviklingsprojekter mellem indkøb, marketing og supply chain teams</li>
-                 </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Sporede sæsonprodukt performance og tilpassede roadmap baseret på real-time salgsdata - kernekompetence for post-launch tracking og roadmap-justeringer som er essentielt for festivalmarketing koordination.</p>
-                </div>
             </div>
-        </div>
           </div>
         </div>
       </div>
@@ -696,43 +723,45 @@
           <div class="profile-description">
             Relevant uddannelse og kompetenceudvikling der styrker mine kvalifikationer som Marketing Projektleder.
           </div>
-          <div class="experience-list">
-            <div class="experience-item" onclick="toggleExperience('education-kursus')" id="education-kursus-item">
-              <div class="experience-header">
-                <div class="experience-title">Projektledelses Kursus</div>
-                <div class="experience-company">Aarhus Business College (2024) • Formelle værktøjer</div>
-              </div>
-              <div id="education-kursus-details" class="experience-details">
-                <div class="skills-grid">
-                  <div class="skill-tag">Projektledelse</div>
-                  <div class="skill-tag">Strukturering</div>
-                  <div class="skill-tag">Koordination</div>
+          <div class="centered-content">
+            <div class="experience-list">
+              <div class="experience-item" onclick="toggleExperience('education-kursus')" id="education-kursus-item">
+                <div class="experience-header">
+                  <div class="experience-title">Projektledelses Kursus</div>
+                  <div class="experience-company">Aarhus Business College (2024) • Formelle værktøjer</div>
                 </div>
-                <ul>
-                  <li>Gennemførte projektledelses kursus for at få formelle værktøjer til min naturlige koordinationsevne</li>
-                  <li>Kombination af praktisk erfaring og teoretisk viden</li>
-                  <li>Fik indsigt i bl.a. SCRUM og effektive planlægningsværktøjer</li>
-                </ul>
-              </div>
-            </div>
-            <div class="experience-item" onclick="toggleExperience('education-uni')" id="education-uni-item">
-              <div class="experience-header">
-                <div class="experience-title">Designkultur og Økonomi</div>
-                <div class="experience-company">Syddansk Universitet Kolding (August 2018 - Juli 2021)</div>
-              </div>
-              <div id="education-uni-details" class="experience-details">
-                <div class="skills-grid">
-                  <div class="skill-tag">Design Thinking</div>
-                  <div class="skill-tag">Økonomiforståelse</div>
-                  <div class="skill-tag">Kulturanalyse</div>
-                  <div class="skill-tag">Visuel kommunikation</div>
+                <div id="education-kursus-details" class="experience-details">
+                  <div class="skills-grid">
+                    <div class="skill-tag">Projektledelse</div>
+                    <div class="skill-tag">Strukturering</div>
+                    <div class="skill-tag">Koordination</div>
+                  </div>
+                  <ul>
+                    <li>Gennemførte projektledelses kursus for at få formelle værktøjer til min naturlige koordinationsevne</li>
+                    <li>Kombination af praktisk erfaring og teoretisk viden</li>
+                    <li>Fik indsigt i bl.a. SCRUM og effektive planlægningsværktøjer</li>
+                  </ul>
                 </div>
-                <ul>
-                  <li>Kombination af kreative design processer og økonomisk forståelse</li>
-                  <li>Kulturelle trends og deres indvirkning på forbrugeradfærd</li>
-                  <li>Visuel kommunikation og brand udvikling</li>
-                  <li>Forretningsforståelse og markedsmekanismer</li>
-                </ul>
+              </div>
+              <div class="experience-item" onclick="toggleExperience('education-uni')" id="education-uni-item">
+                <div class="experience-header">
+                  <div class="experience-title">Designkultur og Økonomi</div>
+                  <div class="experience-company">Syddansk Universitet Kolding (August 2018 - Juli 2021)</div>
+                </div>
+                <div id="education-uni-details" class="experience-details">
+                  <div class="skills-grid">
+                    <div class="skill-tag">Design Thinking</div>
+                    <div class="skill-tag">Økonomiforståelse</div>
+                    <div class="skill-tag">Kulturanalyse</div>
+                    <div class="skill-tag">Visuel kommunikation</div>
+                  </div>
+                  <ul>
+                    <li>Kombination af kreative design processer og økonomisk forståelse</li>
+                    <li>Kulturelle trends og deres indvirkning på forbrugeradfærd</li>
+                    <li>Visuel kommunikation og brand udvikling</li>
+                    <li>Forretningsforståelse og markedsmekanismer</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -745,22 +774,24 @@
           <div class="profile-description">
             Hvorfor jeg brænder for at blive Marketing Projektleder hos Mad & Kultur og bidrage til at skabe autentiske fællesskabsoplevelser for 250.000+ festivalgæster.
           </div>
-          <div class="motivation-text">
-            <p>
-              Mad og kultur er mine to største passioner, så da jeg så jeres jobopslag, tænkte jeg: "Det her er jo det perfekte match." Jeg kommer fra en familie hvor mad er omdrejningspunktet for både hverdag og begivenheder, og jeg er en stor kulturelsker der elsker at dykke ned i det. At kunne kombinere begge dele i mit arbejde? Det er drømmen.
-            </p>
-            <p>
-              Jeg sætter pris på marketing der er kreativ, udfordrende og tankevækkende - marketing der vækker følelser og nysgerrighed i stedet for bare at råbe "køb nu!" Jeres tilgang til festivaler som fællesskabsbyggende begivenheder med gratis adgang for alle taler direkte til mig. Jeg er selv vokset op i Virklund lige udenfor Silkeborg, og noget af det bedste ved min barndom var sommerfesten som bragte hele lokalsamfundet sammen.
-            </p>
-            <p>
-              I mit arbejde hos Adjutant koordinerede jeg 50+ brands, og jeg opdagede at jeg trives som den person, folk kommer til når ting skal løses. Er der et problem? Jeg løser det. Skal flere teams koordineres? Jeg er jeres blæksprutte. Jeg er god til at lytte til folk og samle dem om et fællesmål - jeg er rationel og fair, hvilket betyder at de ugentlige møder med grafikere, fotografer og SoMe folk ville falde mig meget naturligt.
-            </p>
-            <p>
-              Mit projektledelseskursus tog jeg fordi muligheden tilbød sig, og jeg ville gerne genopfriske det fra mine tidligere studier. Det var super godt, og jeg er meget glad for at jeg tog det - det har givet mig de formelle værktøjer til at strukturere min naturlige koordinationsevne.
-            </p>
-            <p>
-              Jeg er en god blanding af struktur og kreativt kaos. Jeg holder overblikket, men jeg tør også tænke udenfor boksen når situationen kræver det. Mad & Kultur føles som stedet hvor denne kombination ikke bare accepteres, men værdsættes. Hvor jeg kan være den koordinerende kraft bag marketing der faktisk betyder noget for folk.
-            </p>
+          <div class="centered-content">
+            <div class="motivation-text">
+              <p>
+                Mad og kultur er mine to største passioner, så da jeg så jeres jobopslag, tænkte jeg: "Det her er jo det perfekte match." Jeg kommer fra en familie hvor mad er omdrejningspunktet for både hverdag og begivenheder, og jeg er en stor kulturelsker der elsker at dykke ned i det. At kunne kombinere begge dele i mit arbejde? Det er drømmen.
+              </p>
+              <p>
+                Jeg sætter pris på marketing der er kreativ, udfordrende og tankevækkende - marketing der vækker følelser og nysgerrighed i stedet for bare at råbe "køb nu!" Jeres tilgang til festivaler som fællesskabsbyggende begivenheder med gratis adgang for alle taler direkte til mig. Jeg er selv vokset op i Virklund lige udenfor Silkeborg, og noget af det bedste ved min barndom var sommerfesten som bragte hele lokalsamfundet sammen.
+              </p>
+              <p>
+                I mit arbejde hos Adjutant koordinerede jeg 50+ brands, og jeg opdagede at jeg trives som den person, folk kommer til når ting skal løses. Er der et problem? Jeg løser det. Skal flere teams koordineres? Jeg er jeres blæksprutte. Jeg er god til at lytte til folk og samle dem om et fællesmål - jeg er rationel og fair, hvilket betyder at de ugentlige møder med grafikere, fotografer og SoMe folk ville falde mig meget naturligt.
+              </p>
+              <p>
+                Mit projektledelseskursus tog jeg fordi muligheden tilbød sig, og jeg ville gerne genopfriske det fra mine tidligere studier. Det var super godt, og jeg er meget glad for at jeg tog det - det har givet mig de formelle værktøjer til at strukturere min naturlige koordinationsevne.
+              </p>
+              <p>
+                Jeg er en god blanding af struktur og kreativt kaos. Jeg holder overblikket, men jeg tør også tænke udenfor boksen når situationen kræver det. Mad & Kultur føles som stedet hvor denne kombination ikke bare accepteres, men værdsættes. Hvor jeg kan være den koordinerende kraft bag marketing der faktisk betyder noget for folk.
+              </p>
+            </div>
           </div>
         </div>
       </div>
