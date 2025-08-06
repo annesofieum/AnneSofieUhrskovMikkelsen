@@ -43,24 +43,34 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 38px 0 0 32px;
+      padding: 0 0 0 32px;
       box-sizing: border-box;
       z-index: 3;
       border-right: none;
       min-height: 100vh;
       box-shadow: 0 2px 22px 0 #dbeada1a;
+      position: relative;
     }
-   .name-title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--title-green);
-  margin-top: 1.7rem;
-  margin-bottom: 2.2rem;
-  letter-spacing: 0.02em;
-  line-height: 1.12;
-  white-space: pre-line;
-  font-family: var(--font-title);
-}
+    .sidebar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 210px;
+      width: 100%;
+      position: relative;
+    }
+    .name-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--title-green);
+      letter-spacing: 0.02em;
+      line-height: 1.12;
+      white-space: pre-line;
+      font-family: var(--font-title);
+      width: 100%;
+      text-align: left;
+    }
     .menu {
       display: flex;
       flex-direction: column;
@@ -153,13 +163,12 @@
       from { opacity: 0; transform: translateY(60px) scale(0.98);}
       to { opacity: 1; transform: translateY(0) scale(1);}
     }
-    /* BIGGER, EASIER TO READ ERFARING/UDDANNELSE BOXES */
     .big-section-box {
       background: var(--card-bg);
       border-radius: var(--border-radius);
       box-shadow: 0 2px 24px #b6c7b414;
       margin: 2vw auto 3vw auto;
-      padding: 4vw 4vw 3vw 4vw; /* more vertical padding */
+      padding: 4vw 4vw 3vw 4vw;
       width: 92%;
       max-width: 900px;
       min-width: 700px;
@@ -188,7 +197,6 @@
     .big-section-box .experience-company {
       font-size: 1.08rem;
     }
-    /* END BIGGER/EASIER ERFARING/UDDANNELSE */
     .om-mig-box, .mapping-box {
       background: var(--card-bg);
       border-radius: var(--border-radius);
@@ -409,7 +417,6 @@
       margin: 0 7px 0 0;
       vertical-align: middle;
     }
-    /* MAKE LEVELS UNDER RADAR NOT BOLD EXCEPT THE NUMBERS */
     .mapping-niveau {
       margin-top: 0.6em;
       margin-bottom: 0;
@@ -427,7 +434,6 @@
       font-weight: 600;
       font-size: 1.08rem;
     }
-    /* END RADAR LEVELS */
     .mapping-right {
       flex: 1 1 0;
       min-width: 340px;
@@ -586,7 +592,7 @@
     .motivation-text { padding: 2.1rem 2rem 2.1rem 1.6rem; font-size: 1.13rem; text-align: center; }
     @media (max-width: 1100px) {
       .section-content,.big-section-box,.om-mig-box,.mapping-box { max-width: 99vw; padding: 2vw 2vw;}
-      .sidebar { width: 100vw; min-width: 0; padding: 24px 0 0 12px; box-shadow: 0 2px 8px #dbeada1a;}
+      .sidebar { width: 100vw; min-width: 0; padding: 0 0 0 12px; box-shadow: 0 2px 8px #dbeada1a;}
       .split-layout { flex-direction: column; }
       .content-area { min-height: 45vh; }
       .front-image { max-width: 98vw; min-height: 60vh; }
@@ -594,13 +600,17 @@
       .mapping-left,.mapping-right { max-width: 100vw; min-width: unset; padding:0; }
       #skillChart { width: 100vw !important; min-width: 180px; height: 220px !important;}
       .big-section-box { min-width: 0; }
+      .sidebar-header { height: auto; min-height: 90px; }
+      .name-title { font-size: 2.1rem; }
     }
   </style>
 </head>
 <body>
   <div class="split-layout">
     <div class="sidebar">
-      <div class="name-title">Anne Sofie Uhrskov<br>Mikkelsen</div>
+      <div class="sidebar-header">
+        <div class="name-title">Anne Sofie Uhrskov<br>Mikkelsen</div>
+      </div>
       <nav class="menu">
         <a href="#" data-section="front" class="active">Forside</a>
         <a href="#" data-section="ommig">Om mig</a>
@@ -733,9 +743,9 @@
                     <li>Faciliterede samarbejde mellem design, marketing og sales teams</li>
                     <li>Ledede og trænede studentermedhjælper mens jeg beholdt overblikket over alle brand operationer</li>
                   </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Med over 50 brands i porteføljen var det afgørende for mig at skabe struktur, så jeg kunne bevare overblikket – ikke bare over egne opgaver, men også for teamet. Jeg udviklede systemer til opgavestyring, der sikrede, at alle deadlines blev overholdt, og at intet blev overset. Det gav mig ikke kun ro til at løse mine egne opgaver effektivt, men gjorde det også muligt at oplære og støtte vores studentermedhjælper i hendes udvikling. Hun blev hurtigt selvkørende, og vi fik både mere kvalitet og mindre stress i teamet.</p>
+                  <p><strong>Case:</strong> Med over 50 brands i porteføljen var det afgørende for mig at skabe struktur, så jeg kunne bevare overblikket – ikke bare over egne opgaver, men også for teamet. Jeg udviklede systemer til opgavestyring, der sikrede, at alle deadlines blev overholdt, og at intet blev overset. Det gav mig ikke kun ro til at løse mine egne opgaver effektivt, men gjorde det også muligt at oplære og støtte vores studentermedhjælper i hendes udvikling. Hun blev hurtigt selvkørende, og vi fik både mere kvalitet og mindre stress i teamet.</p>
                 </div>
-            </div>
+              </div>
               <div class="experience-item" onclick="toggleExperience('sofie')" id="sofie-item">
                 <div class="experience-header">
                   <div class="experience-title">Kreativ Medarbejder</div>
@@ -752,9 +762,9 @@
                     <li>Arbejdede med storytelling og kommunikation omkring miljøbevidste værdier</li>
                     <li>Bidrog til brandets visuelle udtryk og marketingmaterialer</li>
                   </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Jeg fik ansvaret for at udvikle e-mailmarketing via Klaviyo, hvilket startede med et opstartsmøde med Klaviyos eget team for at forstå mulighederne i platformen. Derefter udarbejdede jeg en konkret strategi og stod for både opsætning af flows, contentplan og copywriting.</p>
+                  <p><strong>Case:</strong> Jeg fik ansvaret for at udvikle e-mailmarketing via Klaviyo, hvilket startede med et opstartsmøde med Klaviyos eget team for at forstå mulighederne i platformen. Derefter udarbejdede jeg en konkret strategi og stod for både opsætning af flows, contentplan og copywriting. Resultatet var et mere struktureret og engagerende nyhedsbrev, hvor vi tydeligt kunne se en stigning i både åbningsrater og klik fra modtagerne.</p>
                 </div>
-            </div>
+              </div>
               <div class="experience-item" onclick="toggleExperience('salling')" id="salling-item">
                 <div class="experience-header">
                   <div class="experience-title">Indkøbspraktikant</div>
@@ -768,11 +778,11 @@
                   <ul>
                     <li>Indsamlede markedsindsigter gennem dataanalyse og kundefeedback til sortimentsoptimering</li>
                     <li>Koordinerede udviklingsprojekter mellem indkøb, marketing og supply chain teams</li>
-                 </ul>
-                    <p><strong>Marketing projektleder-relevant case:</strong> Hos Salling lærte jeg vigtigheden af at reagere hurtigt på data. Derfor var en vigtig opgave opfølgning og kunderespons. Foreksempel under julesalget, hvor mange salgskategorier stiger i omsætning, og det er derfor vigtigt at kunne følge med talene og handle hurtigt.</p>
+                  </ul>
+                  <p><strong>Case:</strong> Under julesalget lærte jeg, hvor afgørende det er at reagere hurtigt på data. Jeg fulgte løbende med i salgsudviklingen for de forskellige kategorier og tog initiativ til at justere sortiment og markedsføring på baggrund af de nyeste tal. For eksempel opdagede jeg en markant stigning i efterspørgslen på særlige gaveartikler og foreslog, at vi skubbede ekstra på i markedsføringen – hvilket førte til øget salg i perioden.</p>
                 </div>
+              </div>
             </div>
-        </div>
           </div>
         </div>
       </div>
@@ -833,7 +843,7 @@
           <div class="section-title">Motivation</div>
           <div class="profile-description" style="text-align:left;max-width:700px;margin:0 auto;">
             <strong>Mad og fællesskab er mit udgangspunkt</strong><br>
-            Jeg kommer fra en familie hvor mad er omdrejningspunktet for både hverdag og begivenheder - med en kok som onkel og to hjemmekokke som forældre bliver hver social sammenkomst til en fejring af god mad."</em>
+            Jeg kommer fra en familie, hvor mad bare er kernen i alt. Min onkel er kok, mine forældre er begge hjemmekokke – så hver gang vi samles, bliver det til en rigtig fest med god mad. Da jeg så Mad & Kulturs jobopslag, tænkte jeg: <em>"Det her kunne være noget for mig."</em>
             <br><br>
             Jeg er fra Virklund lige udenfor Silkeborg. Sommerfesten var ikke noget, man overvejede – man mødte bare op. Hele byen var der, alle generationer sammen, og det var bare... godt. På den måde som kun små lokalsamfund kan være. Så når I laver festivaler, der samler folk og er gratis for alle – det giver mening for mig.
             <br><br>
@@ -1040,6 +1050,3 @@
   </script>
 </body>
 </html>
-
-
-
