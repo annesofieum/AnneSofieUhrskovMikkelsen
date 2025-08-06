@@ -140,7 +140,7 @@
       box-shadow: 0 6px 56px #d3e1be3f;
       background: #fff;
     }
-        .section-content {
+    .section-content {
       display: none;
       width: 100%;
       min-width: 700px;
@@ -387,10 +387,11 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
       margin-top: 2.3em;
     }
+    /* NEW LEGEND STYLES */
     .mapping-legendbox {
       background: #fff;
       border-radius: 14px;
@@ -401,40 +402,43 @@
       border: 1.5px solid var(--soft-green);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
       min-width: 340px;
       max-width: 430px;
     }
     .legend {
       display: flex;
-      gap: 30px;
       align-items: center;
-      margin-bottom: 1.2rem;
+      gap: 10px;
       font-size: 1.12rem;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
+      text-align: left;
+      margin-bottom: 0.5rem;
     }
     .legend-color {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       display: inline-block;
-      margin: 0 7px 0 0;
+      margin: 0 6px 0 0;
       vertical-align: middle;
     }
+    .legend-dark { background: var(--legend-dark); }
+    .legend-light { background: var(--legend-light); }
     .mapping-niveau {
-      margin-top: 0.6em;
-      margin-bottom: 0;
-      color: var(--title-green);
-      text-align: center;
-      width: 100%;
-      font-size: 1.02rem;
-      font-weight: 400;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px 32px;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1.3rem;
+      gap: 4px;
+      font-size: 1.08rem;
+      text-align: left;
+      width: 100%;
+    }
+    .niveau-title {
+      margin-bottom: 7px;
     }
     .mapping-niveau b {
       font-weight: 600;
@@ -596,6 +600,7 @@
     .skills-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 9px;}
     .skill-tag { background: var(--accent-green); color: #fff; border-radius: 9px; padding: 3px 8px; font-size: 0.98rem;}
     .motivation-text { padding: 2.1rem 2rem 2.1rem 1.6rem; font-size: 1.13rem; text-align: center; }
+    /* MOBILE STYLES */
     @media (max-width: 1100px) {
       .section-content,.big-section-box,.om-mig-box,.mapping-box { max-width: 99vw; padding: 2vw 2vw;}
       .sidebar { width: 100vw; min-width: 0; padding: 0 0 0 12px; box-shadow: 0 2px 8px #dbeada1a;}
@@ -608,6 +613,110 @@
       .big-section-box { min-width: 0; }
       .sidebar-header { height: auto; min-height: 90px; }
       .name-title { font-size: 2.1rem; }
+    }
+    @media (max-width: 700px) {
+      .sidebar {
+        position: static;
+        width: 100vw;
+        min-width: 0;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 0 0 5px;
+        box-shadow: 0 2px 8px #dbeada1a;
+        z-index: 10;
+      }
+      .sidebar-header {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: auto;
+        min-height: 0;
+        padding: 0;
+      }
+      .menu {
+        flex-direction: row;
+        gap: 0.7rem;
+        margin-left: 0.5rem;
+        width: 100%;
+        justify-content: flex-end;
+      }
+      .menu a {
+        font-size: 0.95rem;
+        padding: 0.12em 0.7em;
+      }
+      .name-title {
+        font-size: 1.12rem;
+        text-align: left;
+        margin-right: 10px;
+        margin-bottom: 0;
+        line-height: 1.1;
+      }
+      .content-area {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+      .big-section-box,
+      .om-mig-box,
+      .mapping-box {
+        padding: 4vw 2vw;
+        min-width: 0;
+        width: 98vw;
+        box-sizing: border-box;
+        max-width: 100vw;
+      }
+      .section-content,
+      .big-section-box,
+      .om-mig-box,
+      .mapping-box {
+        min-width: 0;
+        max-width: 100vw;
+      }
+      .stats-row,
+      .contact-lang-row {
+        flex-direction: column;
+        gap: 18px;
+      }
+      .stat-card,
+      .contact-col,
+      .lang-col {
+        min-width: 0;
+        max-width: 100vw;
+      }
+      .mapping-flex {
+        flex-direction: column;
+        gap: 15px;
+        min-height: 0;
+      }
+      #skillChart {
+        width: 95vw !important;
+        min-width: 0 !important;
+        height: 220px !important;
+      }
+      .om-mig-title,
+      .mapping-headline,
+      .radar-title,
+      .section-title {
+        font-size: 1.2rem !important;
+      }
+      .om-mig-desc,
+      .mapping-desc,
+      .profile-description {
+        font-size: 1rem !important;
+      }
+      .experience-title,
+      .experience-company {
+        font-size: 1rem !important;
+      }
+      .front-image {
+        min-height: 40vh;
+        height: auto;
+        max-width: 100vw;
+      }
+      .mapping-legendbox {
+        min-width: 0;
+        max-width: 100vw;
+        padding: 1.1em 1.2em 1em 1.2em;
+      }
     }
   </style>
 </head>
@@ -693,20 +802,23 @@
               <div class="radar-title">Marketing Kompetence Radar</div>
               <svg id="skillChart"></svg>
               <div class="radar-legend-wrap">
+                <!-- NEW LEGEND LAYOUT -->
                 <div class="mapping-legendbox">
                   <div class="legend">
-                    <div class="legend-color" style="background:var(--legend-dark)"></div>
+                    <span class="legend-color legend-dark"></span>
                     <span>Stærkt niveau (Pro/Ekspert niveau)</span>
-                    <div class="legend-color" style="background:var(--legend-light)"></div>
+                  </div>
+                  <div class="legend">
+                    <span class="legend-color legend-light"></span>
                     <span>Udviklingsområder</span>
                   </div>
                   <div class="mapping-niveau">
-                    <span>Kompetence Niveauer:</span>
-                    <span class="niv"><b>Niveau 1:</b> Begynder</span>
-                    <span class="niv"><b>Niveau 2:</b> På vej</span>
-                    <span class="niv"><b>Niveau 3:</b> Kompetent</span>
-                    <span class="niv"><b>Niveau 4:</b> Pro</span>
-                    <span class="niv"><b>Niveau 5:</b> Ekspert</span>
+                    <div class="niveau-title"><b>Kompetence Niveauer:</b></div>
+                    <div><b>Niveau 1:</b> Begynder</div>
+                    <div><b>Niveau 2:</b> På vej</div>
+                    <div><b>Niveau 3:</b> Kompetent</div>
+                    <div><b>Niveau 4:</b> Pro</div>
+                    <div><b>Niveau 5:</b> Ekspert</div>
                   </div>
                 </div>
               </div>
@@ -1056,4 +1168,3 @@
   </script>
 </body>
 </html>
-
