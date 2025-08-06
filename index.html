@@ -17,6 +17,7 @@
       --border-radius: 18px;
       --font-main: 'Playfair Display', serif;
       --font-title: 'Playfair Display', serif;
+      --text-dark: #181818;
     }
     html, body {
       margin: 0;
@@ -24,7 +25,7 @@
       height: 100%;
       background: var(--box-bg);
       font-family: var(--font-main);
-      color: #232323;
+      color: var(--text-dark);
       font-weight: 400;
       min-height: 100vh;
       box-sizing: border-box;
@@ -166,19 +167,19 @@
       align-items: center;
     }
     .big-section-box .section-title {
-      font-size: 2.25rem;  /* bigger title */
+      font-size: 2.25rem;
       margin-bottom: 2rem;
     }
     .big-section-box .profile-description {
-      font-size: 1.25rem;  /* bigger description */
+      font-size: 1.25rem;
       margin-bottom: 2.2rem;
     }
     .big-section-box .experience-list {
-      gap: 2.6rem; /* more gap between items */
+      gap: 2.6rem;
     }
     .big-section-box .experience-item {
       font-size: 1.13rem;
-      padding: 1.4rem 2.2rem 1.4rem 1.8rem; /* more padding inside experience items */
+      padding: 1.4rem 2.2rem 1.4rem 1.8rem;
     }
     .big-section-box .experience-title {
       font-size: 1.25rem;
@@ -421,7 +422,7 @@
       justify-content: center;
       gap: 18px 32px;
     }
-    .mapping-niveau b, .mapping-niveau .niv {
+    .mapping-niveau b {
       font-weight: 600;
       font-size: 1.08rem;
     }
@@ -502,7 +503,7 @@
       text-align: center;
     }
     .profile-description {
-      color: #232323;
+      color: var(--text-dark);
       margin-bottom: 1.5rem;
       font-size: 1.15rem;
       line-height: 1.62;
@@ -829,27 +830,25 @@
       <div class="section-content" id="motivation-section">
         <div class="big-section-box">
           <div class="section-title">Motivation</div>
-          <div class="profile-description">
-            Hvorfor jeg brænder for at blive Marketing Projektleder hos Mad & Kultur og bidrage til at skabe autentiske fællesskabsoplevelser for 250.000+ festivalgæster.
-          </div>
-          <div class="centered-content">
-            <div class="motivation-text">
-              <p>
-                Mad og kultur er mine to største passioner, så da jeg så jeres jobopslag, tænkte jeg: "Det her er jo det perfekte match." Jeg kommer fra en familie hvor mad er omdrejningspunktet for både hverdag og begivenheder, og jeg er en stor kulturelsker der elsker at dykke ned i det. At kunne kombinere begge dele i mit arbejde? Det er drømmen.
-              </p>
-              <p>
-                Jeg sætter pris på marketing der er kreativ, udfordrende og tankevækkende - marketing der vækker følelser og nysgerrighed i stedet for bare at råbe "køb nu!" Jeres tilgang til festivaler som fællesskabsbyggende begivenheder med gratis adgang for alle taler direkte til mig. Jeg er selv vokset op i Virklund lige udenfor Silkeborg, og noget af det bedste ved min barndom var sommerfesten som bragte hele lokalsamfundet sammen.
-              </p>
-              <p>
-                I mit arbejde hos Adjutant koordinerede jeg 50+ brands, og jeg opdagede at jeg trives som den person, folk kommer til når ting skal løses. Er der et problem? Jeg løser det. Skal flere teams koordineres? Jeg er jeres blæksprutte. Jeg er god til at lytte til folk og samle dem om et fællesmål - jeg er rationel og fair, hvilket betyder at de ugentlige møder med grafikere, fotografer og SoMe folk ville falde mig meget naturligt.
-              </p>
-              <p>
-                Mit projektledelseskursus tog jeg fordi muligheden tilbød sig, og jeg ville gerne genopfriske det fra mine tidligere studier. Det var super godt, og jeg er meget glad for at jeg tog det - det har givet mig de formelle værktøjer til at strukturere min naturlige koordinationsevne.
-              </p>
-              <p>
-                Jeg er en god blanding af struktur og kreativt kaos. Jeg holder overblikket, men jeg tør også tænke udenfor boksen når situationen kræver det. Mad & Kultur føles som stedet hvor denne kombination ikke bare accepteres, men værdsættes. Hvor jeg kan være den koordinerende kraft bag marketing der faktisk betyder noget for folk.
-              </p>
-            </div>
+          <div class="profile-description" style="text-align:left;max-width:700px;margin:0 auto;">
+            <strong>Mad og fællesskab er mit udgangspunkt</strong><br>
+            Jeg kommer fra en familie, hvor mad bare er kernen i alt. Min onkel er kok, mine forældre er begge hjemmekokke – så hver gang vi samles, bliver det til en rigtig fest med god mad. Da jeg så Mad & Kulturs jobopslag, tænkte jeg: <em>"Det her kunne være noget for mig."</em>
+            <br><br>
+            Jeg er fra Virklund lige udenfor Silkeborg. Sommerfesten var ikke noget, man overvejede – man mødte bare op. Hele byen var der, alle generationer sammen, og det var bare... godt. På den måde som kun små lokalsamfund kan være. Så når I laver festivaler, der samler folk og er gratis for alle – det giver mening for mig.
+            <br><br>
+            <strong>Lokalsamfund og værdier</strong><br>
+            Det der virkelig fik mig var, at I giver tilbage til lokalsamfundene gennem donationer. Efter at have oplevet, hvor meget sommerfesten betød for Virklund, kan jeg mærke, hvor vigtigt det er. I tænker på at støtte de lokale fællesskaber, og det rammer mig.
+            <br><br>
+            <strong>Hvad jeg kan bidrage med</strong><br>
+            Hos ADJUTANT havde jeg 50+ brands i porteføljen og koordinerede alt fra hjemmesideopdateringer til billedmateriale og deadline-planlægning. Jeg var den person, teams kom til, når de havde spørgsmål eller brug for at få samlet trådene – alt fra "hjemmesiden virker ikke" til "vi mangler billeder" og "hvornår skal det her være færdigt?" Det passede mig perfekt. Det gav mig erfaring med at holde overblik, selv når tingene bliver komplekse – præcis det I beskriver som en kerneopgave.
+            <br><br>
+            Hos Sofie Ladefoged byggede jeg email-flows i Klaviyo og hjalp med at udvikle nyhedsbreve og nye koncepter. Jeg planlagde også SoMe-opslag i Later og stod for koordineringen af content på tværs af platforme. Fra min tid hos Salling og ADJUTANT har jeg også erfaring med at analysere data i SAP og PowerBI for at forstå, hvad der virker. Den kombination af kreativt arbejde og dataanalyse fungerer rigtig godt for mig.
+            <br><br>
+            <strong>Samarbejde og udvikling</strong><br>
+            Når forskellige kreative typer skal arbejde sammen, har jeg lært, at det handler om at sætte fælles mål og sikre, at alle bliver hørt. De ugentlige møder med grafikere, fotografer og SoMe-folk I nævner, lyder som noget, der ville passe mig perfekt – jeg kan godt lide at være bindeleddet mellem forskellige faggrupper.
+            <br><br>
+            <strong>Derfor Mad & Kultur</strong><br>
+            Mad & Kultur føles som stedet, hvor jeg kan bruge alt det, jeg kan, til at skabe marketing, hvor jeg faktisk kan se den positive effekt hos mennesker. Samtidig med at jeg udvikler mig og lærer nyt i en branche og rolle, hvor der er plads til at vokse – det er præcis den retning, jeg vil med min karriere.
           </div>
         </div>
       </div>
